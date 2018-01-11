@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import NavBar from './nav-bar';
+import SectionContainer from './section-container';
 
-describe('<NavBar />', () => {
+describe('<SectionContainer />', () => {
   it('Should render without crashing', () => {
-    shallow(<NavBar />);
+    shallow(<SectionContainer />);
   });
 });

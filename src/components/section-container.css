@@ -1,0 +1,10 @@
+section {
+  height: 300px;
+  width: 500px;
+  border: solid 1px gray;
+  margin: 40px auto;
+}
+
+h2 {
+  text-align: center;
+}

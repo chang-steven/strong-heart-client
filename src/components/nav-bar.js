@@ -3,9 +3,14 @@ import './nav-bar.css';
 
 export function NavBar(props) {
   return (
-    <header role="navigation" className="App-header">
-      <h1 className="App-title">Heart Strong</h1>
-    </header>
+    <nav className="App-nav">
+      <ul>
+        <li className="nav-left">about</li>
+        <li className="nav-left">exercise log</li>
+        <li className="nav-left">analysis</li>
+        <li className="nav-right">login</li>
+      </ul>
+    </nav>
   );
 }
 

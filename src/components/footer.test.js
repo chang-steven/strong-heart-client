@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import NavBar from './nav-bar';
+import Footer from './footer';
 
-describe('<NavBar />', () => {
+describe('<Footer />', () => {
   it('Should render without crashing', () => {
-    shallow(<NavBar />);
+    shallow(<Footer />);
   });
 });
