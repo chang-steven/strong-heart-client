@@ -6,6 +6,7 @@ import NavBar from '../nav-bar';
 import Home from '../Home';
 import Dashboard from '../Dashboard';
 import ExerciseLog from '../ExerciseLog';
+import AddExercise from '../AddExercise';
 import Badges from '../Badges';
 import Footer from '../footer';
 import Login from '../login';
@@ -22,6 +23,7 @@ function App(props) {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/exerciselog" component={ExerciseLog} />
+        <Route exact path="/addexercise" component={AddExercise} />
         <Route exact path="/badges" component={Badges} />
       </main>
       <Footer />

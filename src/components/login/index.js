@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './login.css';
 
 export function Login(props) {
@@ -27,6 +28,7 @@ export function Login(props) {
         name="submit"
         value="Log-in"
       ></input>
+      <p>New user? <Link to="/signup">Sign-up!</Link></p>
       </fieldset>
     </form>
   );
