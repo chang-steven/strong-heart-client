@@ -1,4 +1,5 @@
 import React from 'react';
+import './login.css';
 
 export function Login(props) {
   return (
@@ -6,21 +7,27 @@ export function Login(props) {
       className="login form"
       method="post"
     >
+      <fieldset>
+        <legend>Log-in</legend>
       <label for="email">Email</label>
       <input
         type="text"
         name="email"
-      ></input>
+      >
+      </input>
+      <br></br>
       <label for="password">Password</label>
       <input
         type="password"
         name="password"
       ></input>
+      <br></br>
       <input
         type="button"
         name="submit"
-        value="Sign-in"
+        value="Log-in"
       ></input>
+      </fieldset>
     </form>
   );
 }

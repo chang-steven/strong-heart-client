@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import Login from './login';
+import Login from './index';
 
 describe('<Login />', () => {
   it('Should render without crashing', () => {

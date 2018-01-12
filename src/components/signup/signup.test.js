@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import SignUp from './signup';
+import SignUp from './index';
 
 describe('<SignUp />', () => {
   it('Should render without crashing', () => {

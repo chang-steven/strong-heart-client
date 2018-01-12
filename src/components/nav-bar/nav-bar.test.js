@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import Home from './home';
+import NavBar from './index';
 
-describe('<Home />', () => {
+describe('<NavBar />', () => {
   it('Should render without crashing', () => {
-    shallow(<Home />);
+    shallow(<NavBar />);
   });
 });

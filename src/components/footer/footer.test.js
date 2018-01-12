@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import SectionContainer from './section-container';
+import Footer from './index';
 
-describe('<SectionContainer />', () => {
+describe('<Footer />', () => {
   it('Should render without crashing', () => {
-    shallow(<SectionContainer />);
+    shallow(<Footer />);
   });
 });
