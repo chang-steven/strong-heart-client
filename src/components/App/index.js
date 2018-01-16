@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './app.css';
 import Header from '../header';
 import NavBar from '../nav-bar';
@@ -14,20 +14,22 @@ import SignUp from '../signup';
 
 function App(props) {
   return (
-    <div className="App">
-      <Header />
-      <NavBar />
-      <main role="main">
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/exerciselog" component={ExerciseLog} />
-        <Route exact path="/addexercise" component={AddExercise} />
-        <Route exact path="/badges" component={Badges} />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <NavBar />
+        <main role="main">
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/exerciselog" component={ExerciseLog} />
+          <Route exact path="/addexercise" component={AddExercise} />
+          <Route exact path="/badges" component={Badges} />
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 export default App;

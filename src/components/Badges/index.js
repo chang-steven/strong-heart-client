@@ -1,24 +1,33 @@
 import React from 'react';
-import './badges.css';
-import Card from '../card';
+import { connect } from 'react-redux';
 
-export function Badges(props) {
+import Card from '../card';
+import './badges.css';
+
+function Badges(props) {
+  const badges = props.badges.map( (badge, index ) =>(
+    <div className="badge card">
+      <h3>{badge.name}</h3>
+      <img src={badge.link} />
+      <p>{badge.date}</p>
+    </div>
+  ),
+);
+
   return (
     <div className="badge-collection">
       <h2>Badges</h2>
       <section className="recent-badge">
-        <Card />
+        <Card text={'Most recent badge goes here'}/>
       </section>
       <section className="badges">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {badges}
       </section>
     </div>
   );
 }
 
-export default Badges;
+const mapStateToProps = state => ({
+  badges: state.badges
+})
+export default connect(mapStateToProps)(Badges);

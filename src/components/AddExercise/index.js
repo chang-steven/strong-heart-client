@@ -8,8 +8,8 @@ export function AddExercise(props) {
         <label for="date">Date</label>
         <input type="date" name="date" value=""></input>
         <br></br>
-        <label for="synopsis">Synopsis</label>
-        <input type="text" name="synopsis" value=""></input>
+        <label for="duration">How long?</label>
+        <input type="text" name="duration" value=""></input>
         <br></br>
         <input type="radio" name="type" value="running"></input>
         <label for="type">Running</label>

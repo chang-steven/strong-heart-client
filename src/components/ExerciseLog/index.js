@@ -1,25 +1,30 @@
 import React from 'react';
-import './exercise-log.css';
+import { connect } from 'react-redux';
+
 import Card from '../card';
+import './exercise-log.css';
 
+function ExerciseLog(props) {
+  const exerciseLog  = props.exerciseLog.map((exercise, index) =>
+    <div className="exercise card" key={index}>
+        <p>{exercise.date}</p>
+        <h3>{exercise.type}</h3>
+        <h3>{exercise.duration}</h3>
+    </div>
+  );
 
-export function ExerciseLog(props) {
   return (
     <div className="exercise-log">
       <h2>Exercise Log</h2>
       <section className="exercises">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {exerciseLog}
       </section>
-
     </div>
   );
 }
 
-export default ExerciseLog;
+const mapStateToProps = state => ({
+  exerciseLog: state.exerciseLog
+})
+
+export default connect(mapStateToProps)(ExerciseLog);

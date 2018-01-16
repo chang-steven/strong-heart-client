@@ -1,10 +1,11 @@
 import React from 'react';
 import './header.css';
+import {Link} from 'react-router-dom'
 
-export function Header(props) {
+function Header(props) {
   return (
     <header className="App-header">
-      <h1 className="App-title">Heart Strong</h1>
+      <h1 className="App-title"><Link to="/">Heart Strong</Link></h1>
     </header>
   );
 }

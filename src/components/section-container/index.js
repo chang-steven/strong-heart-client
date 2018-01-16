@@ -1,10 +1,14 @@
 import React from 'react';
 import './section-container.css';
 
-export function SectionContainer(props) {
+function SectionContainer(props) {
+
   return (
     <section>
-      <h2 className="section-title">Sample Title</h2>
+      <h2 className="section-title">{props.title}</h2>
+      <div>
+        <img src={props.content} />
+      </div>
     </section>
   )
 }
