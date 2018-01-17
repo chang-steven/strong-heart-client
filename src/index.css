@@ -1,6 +1,18 @@
+* {
+  box-sizing: border-border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: hand;
 }

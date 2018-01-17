@@ -13,7 +13,7 @@ ul {
   text-align: center;
 }
 
-li {
+.nav-links {
   display: inline-block;
   margin: 20px;
 }

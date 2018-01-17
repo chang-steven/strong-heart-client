@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Card from '../card';
 import './exercise-log.css';
 
 function ExerciseLog(props) {
@@ -24,7 +23,7 @@ function ExerciseLog(props) {
 }
 
 const mapStateToProps = state => ({
-  exerciseLog: state.exerciseLog
+  exerciseLog: state.heartStrong.exerciseLog
 })
 
 export default connect(mapStateToProps)(ExerciseLog);

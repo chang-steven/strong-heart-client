@@ -62,6 +62,29 @@ const initialState = {
       type: 'basketball'
     },
   ],
+  navBarLinks: {
+
+    default: [
+      {title: 'about', link: '/about'},
+      {title: 'how it works', link: '/how-it-works'},
+      {title: 'analysis', link: '/analysis'},
+      {title: 'login', link: '/login'}
+    ],
+
+    loggedin: [
+      {title: 'dashboard', link: '/dashboard'},
+      {title: 'about', link: '/about'},
+      {title: 'how it works', link: '/how-it-works'},
+      {title: 'analysis', link: '/analysis'}
+    ],
+
+    dashboard: [
+      {title: 'dashboard', link: '/dashboard'},
+      {title: 'exercise log', link: '/exercise-log'},
+      {title: 'add exercise', link: '/add-exercise'},
+      {title: 'badges', link: '/badges'}
+    ]
+  }
 };
 
 export const HeartStrongReducer = (state = initialState) => {

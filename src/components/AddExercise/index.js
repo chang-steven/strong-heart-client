@@ -1,34 +1,40 @@
 import React from 'react';
+import { reduxForm, Field } from 'redux-form';
 
 export function AddExercise(props) {
+
   return (
     <form className="add-exercise form" method="post">
       <fieldset>
         <legend>Add Exercise</legend>
         <label for="date">Date</label>
-        <input type="date" name="date" value=""></input>
-        <br></br>
-        <label for="duration">How long?</label>
-        <input type="text" name="duration" value=""></input>
-        <br></br>
-        <input type="radio" name="type" value="running"></input>
+        <Field name="date" id="date" type="date" component="input" />
+        <button name ="today" type="button">Today</button>
+        <br />
+
+        {/* <label for="activity">Activty</label> */}
+
+
+        <Field type="radio" name="activity" id="running" value="running" component="input" />
         <label for="type">Running</label>
-        <br></br>
-        <input type="radio" name="type" value="basketball"></input>
+        <br />
+        <Field type="radio" name="activity" id="basketball" value="basketball" component="input"  />
         <label for="type">Basketball</label>
-        <br></br>
-        <input type="radio" name="type" value="other"></input>
+        <br />
+        <Field type="radio" name="activity" id="other" value="other" component="input"  />
         <label for="type">Other</label>
-        <br></br>
+        <br />
         <label for="specify">Please Specify</label>
-        <input type="text" name="specify" placeholder="Swimming, etc."></input>
+        <Field type="text" name="specify" placeholder="Swimming, etc." component="input"  />
 
-        <input type="button" name="Submit" value="Add"></input>
-
-        <p>Also will have an open text input to allow manual adding of another "type" of exercise or a "please specify" input, which will then add the text field as a type</p>
+        <br/>
+        <label for="duration">How long?</label>
+        <Field name="duration" id="duration" type="number" component="input" placeholder="in mins" />
+        <br />
+        <button type="button" name="Submit">Add Exercise</button>
       </fieldset>
     </form>
   );
 }
 
-export default AddExercise;
+export default reduxForm({form: 'add-exercise'})(AddExercise);

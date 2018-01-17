@@ -1,5 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { reduxForm, Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 import './login.css';
 
 export function Login(props) {
@@ -10,28 +11,17 @@ export function Login(props) {
     >
       <fieldset>
         <legend>Log-in</legend>
-      <label for="email">Email</label>
-      <input
-        type="text"
-        name="email"
-      >
-      </input>
-      <br></br>
-      <label for="password">Password</label>
-      <input
-        type="password"
-        name="password"
-      ></input>
-      <br></br>
-      <input
-        type="button"
-        name="submit"
-        value="Log-in"
-      ></input>
-      <p>New user? <Link to="/signup">Sign-up!</Link></p>
+        <label for="email">Email</label>
+        <Field name="email" id="email" type="email" component="input" />
+        <br />
+        <label for="password">Password</label>
+        <Field name="password" id="password" type="password" component="input" />
+        <br />
+        <button type="submit">Log-in</button>
+        <p>New user? <Link to="/signup">Sign-up!</Link></p>
       </fieldset>
     </form>
   );
 }
 
-export default Login;
+export default reduxForm({ form: 'log-in' })(Login)

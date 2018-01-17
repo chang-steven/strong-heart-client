@@ -8,7 +8,7 @@ function Badges(props) {
   const badges = props.badges.map( (badge, index ) =>(
     <div className="badge card">
       <h3>{badge.name}</h3>
-      <img src={badge.link} />
+      <img src={badge.link} alt={badge.name} />
       <p>{badge.date}</p>
     </div>
   ),
@@ -28,6 +28,6 @@ function Badges(props) {
 }
 
 const mapStateToProps = state => ({
-  badges: state.badges
+  badges: state.heartStrong.badges
 })
 export default connect(mapStateToProps)(Badges);

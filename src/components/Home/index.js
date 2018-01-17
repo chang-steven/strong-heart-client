@@ -17,7 +17,7 @@ export function Home(props) {
 }
 
 const mapStateToProps = state => ({
-  homeContent: state.appStaticContent.homeContent
+  homeContent: state.heartStrong.appStaticContent.homeContent
 })
 
 export default connect(mapStateToProps)(Home);
