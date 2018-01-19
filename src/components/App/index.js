@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -20,7 +22,10 @@ export class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { isOpen: false };
+    this.state = {
+      isOpen: false,
+      loggedIn: false
+                    };
   }
 
   toggleModal = () => {
@@ -30,13 +35,11 @@ export class App extends React.Component {
   }
 
   render() {
-    const links = this.props.links.map( link => link);
-
     return (
       <Router>
         <div className="App">
           <Header />
-          <NavBar links={links}/>
+          <NavBar />
           <main role="main">
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
@@ -53,11 +56,13 @@ export class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  links: state.heartStrong.navBarLinks.dashboard
-})
 
-export default connect(mapStateToProps)(App);
+export default App;
+// const mapStateToProps = state => ({
+//   links: state.heartStrong.navBarLinks.dashboard
+// })
+//
+// export default connect(mapStateToProps)(App);
 
 //
 // Modal window code

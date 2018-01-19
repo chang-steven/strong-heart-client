@@ -1,92 +1,28 @@
+import { FETCH_EXERCISELOG_SUCCESS, FETCH_BADGES_SUCCESS } from '../actions';
 
 const initialState = {
-  badges: [
-    {
-      name: 'Got Started',
-      link: 'http://via.placeholder.com/200x200',
-      earned: true,
-      date: 321321,
-    },
-    {
-      name: 'Two in a Row',
-      link: 'http://via.placeholder.com/200x200',
-      earned: false,
-      date: 121232,
-    },
-  ],
-  appStaticContent: {
-    homeContent: [
-      {
-        title: 'about',
-        content: 'http://via.placeholder.com/400x200',
-      },
-      {
-        title: 'how it works',
-        content: 'http://via.placeholder.com/400x200',
-      },
-      {
-        title: 'analysis',
-        content: 'http://via.placeholder.com/400x200',
-}
-    ],
-  },
-  exerciseLog: [
-    {
-      date: '1111111',
-      duration: 30,
-      type: 'tennis'
-    },
-    {
-      date: '321321321',
-      duration: 55,
-      type: 'basketball'
-    },
-    {
-      date: '1111111',
-      duration: 30,
-      type: 'tennis'
-    },
-    {
-      date: '321321321',
-      duration: 55,
-      type: 'basketball'
-    },
-    {
-      date: '1111111',
-      duration: 30,
-      type: 'tennis'
-    },
-    {
-      date: '321321321',
-      duration: 55,
-      type: 'basketball'
-    },
-  ],
-  navBarLinks: {
-
-    default: [
-      {title: 'about', link: '/about'},
-      {title: 'how it works', link: '/how-it-works'},
-      {title: 'analysis', link: '/analysis'},
-      {title: 'login', link: '/login'}
-    ],
-
-    loggedin: [
-      {title: 'dashboard', link: '/dashboard'},
-      {title: 'about', link: '/about'},
-      {title: 'how it works', link: '/how-it-works'},
-      {title: 'analysis', link: '/analysis'}
-    ],
-
-    dashboard: [
-      {title: 'dashboard', link: '/dashboard'},
-      {title: 'exercise log', link: '/exercise-log'},
-      {title: 'add exercise', link: '/add-exercise'},
-      {title: 'badges', link: '/badges'}
-    ]
-  }
+  badges: [],
+  exerciseLog: [],
 };
 
-export const HeartStrongReducer = (state = initialState) => {
-  return state;
+export const HeartStrongReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_EXERCISELOG_SUCCESS: {
+      return {
+        ...state,
+        exerciseLog: action.response,
+      }
+    }
+
+    case FETCH_BADGES_SUCCESS: {
+      return {
+        ...state,
+        badges: action.response,
+      }
+    }
+
+    default: {
+      return state;
+    }
+  }
 };

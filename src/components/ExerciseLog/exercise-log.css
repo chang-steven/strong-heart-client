@@ -1,3 +1,8 @@
 .exercises {
   height: fit-content;
 }
+
+.exercise {
+  padding: 20px;
+
+}
