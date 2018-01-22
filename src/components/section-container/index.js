@@ -7,7 +7,7 @@ function SectionContainer(props) {
     <section>
       <h2 className="section-title">{props.title}</h2>
       <div>
-        <img src={props.content} alt={props.name}/>
+        <img src={props.content} alt={props.title}/>
       </div>
     </section>
   )

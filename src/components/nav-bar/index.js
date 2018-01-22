@@ -35,7 +35,7 @@ export default function NavBar(props) {
   }
 
   else {
-    currentLinks = defaultNavLinks;
+    currentLinks = dashboardNavLinks;
   }
 
 const links = currentLinks.map((link, index) =>

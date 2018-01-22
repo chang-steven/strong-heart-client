@@ -2,16 +2,12 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Home } from './index';
-import SectionContainer from '../section-container';
+import Home from './index';
+// import { Home } from './index';
+
 
 describe('<Home />', () => {
-  const props = {
-    homeContent: [
-      {content: 'This content'}
-    ]
-  };
   it('Should render without crashing', () => {
-    shallow(<Home {...props}/>);
+    shallow(<Home />);
   });
 });
