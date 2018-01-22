@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchBadges } from '../../actions';
 
-import Card from '../card';
+// import Card from '../card';
 import './badges.css';
 
 export class Badges extends React.Component {
