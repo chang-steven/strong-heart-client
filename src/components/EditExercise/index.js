@@ -6,8 +6,6 @@ import { editExercise } from '../../actions';
 
 export class EditExercise extends React.Component {
 
-//do i need to write a fetch exercise function to get the values for the id?
-
   onSubmit(values) {
     console.log(values);
     console.log(this);
@@ -15,11 +13,18 @@ export class EditExercise extends React.Component {
   }
 
   render() {
+    const url = window.location.pathname;
+    const exerciseId = url.substring(url.lastIndexOf('/') + 1);
+    console.log(exerciseId);
+
     console.log('logging out ');
+
+
+    let exercise = this.props.exerciseLog.filter(exercise => exercise._id === exerciseId);
+    console.log(exercise[0]);
+
     console.log(this.props);
-    const initialValues = {
-      duration: 25,
-    };
+    const initialValues = exercise[0];
 
     return (
       <ExerciseForm onSubmit={this.onSubmit.bind(this)} initialValues={initialValues} />
@@ -27,14 +32,8 @@ export class EditExercise extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  let map = {};
-    map.initialValues = {
-      date: props.date,
-      activity: props.activity,
-      duration: props.duration,
-    }
-  return map;
-};
+const mapStateToProps = (state) => ({
+  exerciseLog: state.exercise.exerciseLog
+});
 
 export default connect(mapStateToProps, { editExercise })(EditExercise);

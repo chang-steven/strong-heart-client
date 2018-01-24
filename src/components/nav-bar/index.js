@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './nav-bar.css';
 
-export default function NavBar(props) {
+export function NavBar(props) {
   let currentLinks;
 
   const defaultNavLinks = [
-    {title: 'about', link: '/about'},
-    {title: 'how it works', link: '/how-it-works'},
-    {title: 'analysis', link: '/analysis'},
+    {title: 'about', link: '/#about'},
+    {title: 'how it works', link: '/#how-it-works'},
+    {title: 'analysis', link: '/#analysis'},
     {title: 'login', link: '/login'}
   ];
 
@@ -54,3 +55,9 @@ const links = currentLinks.map((link, index) =>
     </nav>
   );
 }
+
+const mapStateToProps = state => ({
+  loggedIn: state.user.loggedIn,
+})
+
+export default connect(mapStateToProps)(NavBar);

@@ -1,19 +1,20 @@
-import { FETCH_EXERCISELOG_SUCCESS, ADD_EXERCISE_SUCCESS } from '../actions';
+import * as actions from '../actions';
 
 const initialState = {
+  loading: false,
   exerciseLog: [],
 };
 
 export const ExerciseReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_EXERCISELOG_SUCCESS: {
+    case actions.FETCH_EXERCISELOG_SUCCESS: {
       return {
         ...state,
         exerciseLog: action.response,
       }
     }
 
-    case ADD_EXERCISE_SUCCESS: {
+    case actions.ADD_EXERCISE_SUCCESS: {
       console.log(action.response);
       alert('Successfully Added Exercise');
       return {

@@ -11,6 +11,9 @@ export class Login extends React.Component {
   onSubmit(values) {
     console.log(values);
     this.props.userLogIn(values);
+    //How to do this only on success?
+    this.props.history.push("/dashboard");
+
   }
 
   render() {
@@ -29,6 +32,8 @@ export class Login extends React.Component {
           <br />
           <button type="submit">Log-in</button>
           <p>New user? <Link to="/signup">Sign-up!</Link></p>
+          <p>Wanna just look around? <button>Test User Login</button></p>
+
         </fieldset>
       </form>
     );

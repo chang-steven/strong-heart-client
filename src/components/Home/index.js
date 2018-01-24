@@ -25,16 +25,18 @@ export default function Home(props) {
   const homeContentArray = [
     {
       title: 'how it works',
+      anchor: 'how-it-works',
       content: 'http://via.placeholder.com/400x200',
     },
     {
       title: 'analysis',
+      anchor: 'anchor',
       content: 'http://via.placeholder.com/400x200',
     },
   ];
 
   const homeContent = homeContentArray.map( (content, index) =>
-      <SectionContainer {...content} key={index} />
+      <SectionContainer className='analysis' {...content} key={index} />
     );
 
   const whyContent = whyContentArray.map( (content, index) =>
@@ -48,7 +50,7 @@ export default function Home(props) {
 
   return (
     <div className="home">
-      <h2>Home</h2>
+      <h2><a name='about'>Home</a></h2>
       {whyContent}
       <div>
         {homeContent}

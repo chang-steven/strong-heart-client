@@ -1,10 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
 export class ExerciseForm extends React.Component {
 
   render() {
+
+    const activitiesArray = ['basketball', 'tennis', 'running', 'aerobics'];
+
+    const activities = activitiesArray.map( activity => {
+
+      function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      };
+      const capitalActivity = capitalizeFirstLetter(activity);
+      return (
+      <div>
+        <Field type="radio" name="activity" id={activity} value={activity} component="input" />
+        <label for="activity">{capitalActivity}</label>
+      </div>
+    )
+  });
+
     return (
       <form className="add-exercise form" onSubmit = {this.props.handleSubmit(this.props.onSubmit)}>
         <fieldset>
@@ -14,18 +30,13 @@ export class ExerciseForm extends React.Component {
           <button name ="today" type="button">Today</button>
           <br />
 
-          <Field type="radio" name="activity" id="running" value="running" component="input" />
-          <label for="type">Running</label>
-          <br />
-          <Field type="radio" name="activity" id="basketball" value="basketball" component="input"  />
-          <label for="type">Basketball</label>
-          <br />
+          {activities}
+
           <Field type="radio" name="activity" id="other" value="other" component="input"  />
-          <label for="type">Other</label>
+          <label for="activity">Other</label>
           <br />
           <label for="specify">Please Specify</label>
           <Field type="text" name="specify" placeholder="Swimming, etc." component="input"  />
-
           <br/>
           <label for="duration">How long?</label>
           <Field name="duration" id="duration" type="number" component="input" placeholder="in mins" />

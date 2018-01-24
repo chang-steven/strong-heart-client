@@ -25,8 +25,6 @@ export class App extends React.Component {
 
     this.state = {
       isOpen: false,
-      loggedIn: false,
-      home: true,
       };
   }
 
@@ -49,7 +47,7 @@ export class App extends React.Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/exercise-log" component={ExerciseLog} />
             <Route exact path="/add-exercise" component={AddExercise} />
-            <Route exact path="/edit-exercise" component={EditExercise} />
+            <Route path="/edit-exercise" component={EditExercise} />
             <Route exact path="/badges" component={Badges} />
           </main>
           <Footer />

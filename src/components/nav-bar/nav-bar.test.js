@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import NavBar from './index';
+import { NavBar } from './index';
 
 describe('<NavBar />', () => {
-  const testLinks = [  
+  const testLinks = [
     {title: 'about', link: '/about'},
     {title: 'how it works', link: '/how-it-works'},
     {title: 'analysis', link: '/analysis'}

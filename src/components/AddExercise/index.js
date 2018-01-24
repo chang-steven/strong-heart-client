@@ -9,6 +9,8 @@ export class AddExercise extends React.Component {
     console.log(values);
     console.log(this);
     this.props.addExercise(values);
+    //How to redirect only on success?
+    this.props.history.push("/exercise-log");
   }
 
   render() {

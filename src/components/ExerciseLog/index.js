@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { fetchExerciseLog } from '../../actions';
 import './exerciselog.css';
 
-
 import './exercise-log.css';
 
 export class ExerciseLog extends React.Component {
@@ -21,11 +20,10 @@ export class ExerciseLog extends React.Component {
           <br />
           <span><Link to={`/delete/${exercise._id}`}>delete</Link></span>
         </div>
-
           <p>{exercise.date}</p>
-          <h3>{exercise.type}</h3>
+          <h3>{exercise.activity}</h3>
           <h3>{exercise.duration}m</h3>
-      </div>
+        </div>
     );
 
     return (
