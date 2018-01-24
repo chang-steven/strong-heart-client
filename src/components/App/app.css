@@ -6,3 +6,8 @@
 main {
   padding-bottom: 75px;
 }
+.card {
+  display: inline-block;
+  border: 1px dashed lightgray;
+  margin: 20px;
+}

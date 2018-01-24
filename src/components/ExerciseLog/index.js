@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchExerciseLog } from '../../actions';
+import './exerciselog.css';
+
 
 import './exercise-log.css';
 
@@ -13,6 +16,12 @@ export class ExerciseLog extends React.Component {
   render() {
     const exerciseLog  = this.props.exerciseLog.map((exercise, index) =>
       <div className="exercise card" key={index}>
+        <div className="exercise-menu">
+          <span><Link to={`/edit-exercise/${exercise._id}`}>edit</Link></span>
+          <br />
+          <span><Link to={`/delete/${exercise._id}`}>delete</Link></span>
+        </div>
+
           <p>{exercise.date}</p>
           <h3>{exercise.type}</h3>
           <h3>{exercise.duration}m</h3>
@@ -31,7 +40,7 @@ export class ExerciseLog extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  exerciseLog: state.heartStrong.exerciseLog
+  exerciseLog: state.exercise.exerciseLog
 })
 
 export default connect(mapStateToProps, {fetchExerciseLog})(ExerciseLog);

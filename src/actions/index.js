@@ -83,6 +83,29 @@ export function addExercise(data) {
     };
 }
 
+//Edit Exercise
+export const EDIT_EXERCISE_TRIGGERED = 'EDIT_EXERCISE_TRIGGERED'
+export const EDIT_EXERCISE_SUCCESS = 'EDIT_EXERCISE_SUCCESS';
+export const EDIT_EXERCISE_FAILURE = 'EDIT_EXERCISE_FAILURE';
+
+export function editExercise(data) {
+    const promise = fetch(`${API_BASE_URL}/edit-exercise`,
+    {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    });
+    return {
+        onRequest: EDIT_EXERCISE_TRIGGERED,
+        onSuccess: EDIT_EXERCISE_SUCCESS,
+        onFailure: EDIT_EXERCISE_FAILURE,
+        promise,
+    };
+}
+
+
 
 //Fetch Badges
 export const FETCH_BADGES_TRIGGERED = 'FETCH_BADGES_TRIGGERED';

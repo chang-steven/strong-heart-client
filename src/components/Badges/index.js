@@ -43,6 +43,6 @@ export class Badges extends React.Component {
 
 
 const mapStateToProps = state => ({
-  badges: state.heartStrong.badges
+  badges: state.user.badges
 })
 export default connect(mapStateToProps, {fetchBadges})(Badges);

@@ -11,6 +11,7 @@ import Home from '../Home';
 import Dashboard from '../Dashboard';
 import ExerciseLog from '../ExerciseLog';
 import AddExercise from '../AddExercise';
+import EditExercise from '../EditExercise';
 import Badges from '../Badges';
 import Footer from '../footer';
 import Login from '../login';
@@ -24,7 +25,8 @@ export class App extends React.Component {
 
     this.state = {
       isOpen: false,
-      loggedIn: false
+      loggedIn: false,
+      home: true,
       };
   }
 
@@ -39,7 +41,7 @@ export class App extends React.Component {
       <Router>
         <div className="App">
           <Header />
-          <NavBar />
+          <NavBar loggedIn/>
           <main role="main">
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
@@ -47,6 +49,7 @@ export class App extends React.Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/exercise-log" component={ExerciseLog} />
             <Route exact path="/add-exercise" component={AddExercise} />
+            <Route exact path="/edit-exercise" component={EditExercise} />
             <Route exact path="/badges" component={Badges} />
           </main>
           <Footer />
