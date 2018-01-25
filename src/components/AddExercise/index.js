@@ -14,15 +14,21 @@ export class AddExercise extends React.Component {
   }
 
   render() {
+    const title = 'Add Exercise';
+    
     return (
-      <ExerciseForm onSubmit={this.onSubmit.bind(this)} />
+      <ExerciseForm
+        formTitle={title}
+        activities={this.props.activities}
+        onSubmit={this.onSubmit.bind(this)}
+      />
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return state;
-  };
+const mapStateToProps = (state) => ({
+  activities: state.user.currentUser.activities
+  });
 
 
 

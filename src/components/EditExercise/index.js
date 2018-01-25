@@ -7,33 +7,30 @@ import { editExercise } from '../../actions';
 export class EditExercise extends React.Component {
 
   onSubmit(values) {
-    console.log(values);
-    console.log(this);
     this.props.editExercise(values);
   }
 
   render() {
     const url = window.location.pathname;
     const exerciseId = url.substring(url.lastIndexOf('/') + 1);
-    console.log(exerciseId);
-
-    console.log('logging out ');
-
-
     let exercise = this.props.exerciseLog.filter(exercise => exercise._id === exerciseId);
-    console.log(exercise[0]);
-
-    console.log(this.props);
     const initialValues = exercise[0];
+    const title = 'Edit Exercise';
 
     return (
-      <ExerciseForm onSubmit={this.onSubmit.bind(this)} initialValues={initialValues} />
+      <ExerciseForm
+        formTitle={title}
+        activities={this.props.activities}
+        onSubmit={this.onSubmit.bind(this)}
+        initialValues={initialValues}
+      />
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  exerciseLog: state.exercise.exerciseLog
+  exerciseLog: state.exercise.exerciseLog,
+  activities: state.user.currentUser.activities
 });
 
 export default connect(mapStateToProps, { editExercise })(EditExercise);

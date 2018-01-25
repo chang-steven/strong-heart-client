@@ -3,6 +3,7 @@ import * as actions from '../actions';
 const initialState = {
   loading: false,
   exerciseLog: [],
+  exerciseStatistics: {},
 };
 
 export const ExerciseReducer = (state = initialState, action) => {
@@ -10,7 +11,8 @@ export const ExerciseReducer = (state = initialState, action) => {
     case actions.FETCH_EXERCISELOG_SUCCESS: {
       return {
         ...state,
-        exerciseLog: action.response,
+        exerciseLog: action.response.exerciseLog,
+        exerciseStatistics: action.response.statistics,
       }
     }
 
