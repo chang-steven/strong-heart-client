@@ -1,3 +1,8 @@
 #activities {
   text-align: left;
 }
+
+/* only works for block level elements */
+/* label::first-letter {
+    text-transform: uppercase;
+} */

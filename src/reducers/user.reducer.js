@@ -4,6 +4,7 @@ const initialState = {
   error: false,
   loading: false,
   loggedIn: false,
+  redirectToReferrer: false,
   currentUser: {},
   badges: [],
 };
@@ -18,7 +19,6 @@ export const UserReducer = (state = initialState, action) => {
     }
 
     case actions.USER_SIGNUP_SUCCESS: {
-      console.log(action.response);
       alert('Succesfully Signed Up!');
       return {
         ...state,
@@ -34,12 +34,11 @@ export const UserReducer = (state = initialState, action) => {
     }
 
     case actions.USER_LOGIN_SUCCESS: {
-      console.log(action.response);
-      alert('Succesfully Logged in!');
       return {
         ...state,
         currentUser: action.response.user,
         loggedIn: true,
+        redirectToReferrer: true
       }
     }
 

@@ -1,14 +1,45 @@
 import React from 'react';
-import SectionContainer from '../section-container'
+import { connect } from 'react-redux';
+import { fetchExerciseLog } from '../../actions';
+
+import LineWrapper from '../line-wrapper';
+import DoughnutWrapper from '../doughnut-wrapper';
 import './dashboard.css';
 
-export default function Dashboard(props) {
-  return (
-    <div className="dashboard">
-      <h2>Dashboard</h2>
-      <SectionContainer title="Pie Chart" content="http://www.conceptdraw.com/How-To-Guide/picture/Percentage-pie-chart-DA-determinations.png"/>
-      <SectionContainer title="Statistics" content="http://via.placeholder.com/400x200"/>
-      <SectionContainer title="Line Chart" content="https://canvasjs.com/wp-content/uploads/images/gallery/php-charts/dynamic/php-dynamic-live-line-charts-graphs.png"/>
-    </div>
-  );
+export class Dashboard extends React.Component {
+  // componentDidMount() {
+  //   this.props.fetchExerciseLog();
+  // }
+
+  render() {
+    return (
+      <div className="dashboard">
+        <h2>Dashboard</h2>
+          <section>
+            <DoughnutWrapper />
+          </section>
+          <section>
+            <h2>Statistics</h2>
+            {/* <span>{this.props.exerciseStatistics.totalExerciseSessions}</span>
+            <h4>Exercise Sessions this month</h4> */}
+            <span>{this.props.exerciseStatistics.averageMinutesPerSession}</span>
+            <h4>Average Minutes of Exercise</h4>
+            <span>{this.props.exerciseStatistics.totalExerciseSessions}</span>
+            <h4>Total Exercise Sessions</h4>
+            <span>{this.props.exerciseStatistics.totalExerciseMinutes}</span>
+            <h4>Total Minutes Logged</h4>
+          </section>
+          <section>
+            <LineWrapper />
+          </section>
+      </div>
+    );
+  }
 }
+
+
+const mapStateToProps = state => ({
+  exerciseStatistics: state.exercise.exerciseStatistics
+});
+
+export default connect(mapStateToProps, {fetchExerciseLog})(Dashboard);

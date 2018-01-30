@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchExerciseLog } from '../../actions';
-import './exerciselog.css';
-
+import Moment from 'react-moment';
 import './exercise-log.css';
 
 export class ExerciseLog extends React.Component {
@@ -13,21 +12,18 @@ export class ExerciseLog extends React.Component {
   }
 
   render() {
-    const exerciseLog  = this.props.exerciseLog.map((exercise, index) => {
-      const [yr, mo, day] = exercise.date.split('-');
-      const modDate = `${mo}-${day}-${yr.slice(2,4)}`
-      return (
+    const exerciseLog  = this.props.exerciseLog.map((exercise, index) => (
         <div className="exercise card" key={index}>
         <div className="exercise-menu">
           <span><Link to={`/edit-exercise/${exercise._id}`}>edit</Link></span>
           <br />
           <span><Link to={`/delete/${exercise._id}`}>delete</Link></span>
         </div>
-          <p>{modDate}</p>
+          <p><Moment format="MM-DD-YY">{exercise.date}</Moment></p>
           <h3>{exercise.activity}</h3>
           <h3>{exercise.duration}m</h3>
         </div>
-      )}
+      )
     );
 
     return (

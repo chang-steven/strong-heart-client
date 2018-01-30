@@ -27,6 +27,14 @@ export function userSignUp(data) {
 export const USER_LOGIN_TRIGGERED = 'USER_LOGIN_TRIGGERED'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
+const handleSuccessUserAuthentication = (response, dispatch) => {
+    sessionStorage.setItem( "token", response.token )
+    dispatch({
+        type: 'USER_LOGIN_SUCCESS',
+        response
+    });
+    // dispatch(push('/user-timelines'))
+};
 
 export function userLogIn(data) {
     const promise = fetch(`${API_BASE_URL}/login`,
@@ -39,7 +47,7 @@ export function userLogIn(data) {
     });
     return {
         onRequest: USER_LOGIN_TRIGGERED,
-        onSuccess: USER_LOGIN_SUCCESS,
+        onSuccess: handleSuccessUserAuthentication,
         onFailure: USER_LOGIN_FAILURE,
         promise,
     };

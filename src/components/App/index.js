@@ -1,8 +1,8 @@
 // @flow
 
 import React from 'react';
-// import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import './app.css';
 
 import Header from '../header';
@@ -16,34 +16,98 @@ import Badges from '../Badges';
 import Footer from '../footer';
 import Login from '../login';
 import SignUp from '../signup';
-// import Modal from '../modal';
+import Modalbox from '../modalbox';
+// import PrivateRoute from '../private-route';
 
+const PrivateRoute = ({ component: Component, ...rest}) => {
+    return (
+  <Route {...rest} render={(props) => (
+    sessionStorage.getItem('token')
+      ? <Component {...props} />
+      : <Redirect to='/login' />
+  )}/>
+);
+}
+
+// const fakeAuth = {
+//   isAuthenticated: false,
+//   authenticate(cb) {
+//     this.isAuthenticated = true;
+//     setTimeout(cb, 100); // fake async
+//   },
+//   signout(cb) {
+//     this.isAuthenticated = false
+//     setTimeout(cb, 100); // fake async
+//   }
+// }
 
 export class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isOpen: false,
+      isModalVisible: false,
+      modalName: null,
       };
+    }
+
+  handleClose(){
+    this.setState({ isModalVisible: false,
+                    modalName: null });
   }
 
-  toggleModal = () => {
-    this.setState({
-      isOpen:!this.state.isOpen
-    });
+  open(modalName){
+    this.setState({ isModalVisible: true,
+                    modalName });
   }
 
   render() {
+    console.log(this.props);
     return (
       <Router>
         <div className="App">
           <Header />
-          <NavBar loggedIn/>
+          <NavBar openModal={this.open.bind(this)} />
           <main role="main">
+
+            { this.state.isModalVisible && this.state.modalName === 'login' &&
+            <Modalbox
+              handleClose={this.handleClose.bind(this)}>
+              <Login />
+            </Modalbox>
+            }
+
+            { this.state.isModalVisible && this.state.modalName === 'signup' &&
+            <Modalbox handleClose={this.handleClose.bind(this)}>
+              <SignUp />
+            </Modalbox>
+            }
+
+            { this.state.isModalVisible && this.state.modalName === 'add-exercise' &&
+            <Modalbox handleClose={this.handleClose.bind(this)}>
+              <AddExercise />
+            </Modalbox>
+            }
+
+            { this.state.isModalVisible && this.state.modalName === 'edit-exercise' &&
+            <Modalbox
+              handleClose={this.handleClose.bind(this)}>
+              <EditExercise />
+            </Modalbox>
+            }
+
+
+            <div className='modal-example'>
+              <button onClick={this.open.bind(this, 'login')}>
+                Open Modal
+              </button>
+            </div>
+
+
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
+            <PrivateRoute path='/protected' component={Badges} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/exercise-log" component={ExerciseLog} />
             <Route exact path="/add-exercise" component={AddExercise} />
@@ -56,23 +120,9 @@ export class App extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  loggedIn: state.user.loggedIn,
+  redirectToReferrer: state.user.redirectToReferrer
+});
 
-
-export default App;
-// const mapStateToProps = state => ({
-//   links: state.heartStrong.navBarLinks.dashboard
-// })
-//
-// export default connect(mapStateToProps)(App);
-
-//
-// Modal window code
-// <div>
-//   <button onClick={this.toggleModal}>Open Modal</button>
-//
-//   <Modal show={this.state.isOpen}
-//    onClose={this.toggleModal}>
-//    Here's some content for the modal
-//  </Modal>
-// </div>
-// https://daveceddia.com/open-modal-in-react/
+export default connect(mapStateToProps)(App);

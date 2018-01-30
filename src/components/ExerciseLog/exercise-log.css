@@ -4,5 +4,9 @@
 
 .exercise {
   padding: 20px;
+}
 
+.exercise-menu {
+  text-align: right;
+  border: 1px dotted gray;
 }

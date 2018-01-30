@@ -1,13 +1,16 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, formValueSelector } from 'redux-form';
+import { connect } from 'react-redux';
 import './exercise-form.css';
 
 export class ExerciseForm extends React.Component {
 
+  addActivity(input) {
+    console.log(input);
+  }
+
   render() {
-
-    // const activitiesArray = ['basketball', 'tennis', 'running', 'aerobics'];
-
+    console.log(this.props.activity);
     const activities = this.props.activities.map( activity => {
 
       function capitalizeFirstLetter(string) {
@@ -33,8 +36,10 @@ export class ExerciseForm extends React.Component {
           <div id="activities">
             <label for="activity">Activities</label>
             {activities}
+
             <Field type="radio" name="activity" id="other" value="other" component="input"  />
-            <Field type="text" name="specify" placeholder="Swimming, etc." component="input"  />
+            <Field type="text" name="newActivity" placeholder="Swimming, etc." component="input"  />
+            <button onClick = {() => this.addActivity(this.props.activity)}>Add New Activity</button>
           </div>
 
           <br/>
@@ -48,4 +53,14 @@ export class ExerciseForm extends React.Component {
   }
 }
 
-export default reduxForm({ form: 'exercise-form', enableReinitialize: true })(ExerciseForm);
+const selector = formValueSelector('exercise-form');
+
+const mapStateToProps = state => ({
+  activity: selector(state, 'newActivity')
+});
+
+// const Connected = connect(mapStateToProps)(ExerciseForm);
+//
+// export default reduxForm({ form: 'exercise-form', enableReinitialize: true }, mapStateToProps)(Connected);
+
+export default connect(mapStateToProps)(reduxForm({ form: 'exercise-form' })(ExerciseForm));

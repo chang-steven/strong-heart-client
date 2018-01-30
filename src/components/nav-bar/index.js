@@ -1,57 +1,59 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Scrollchor from 'react-scrollchor';
+
 import './nav-bar.css';
 
 export function NavBar(props) {
-  let currentLinks;
-
-  const defaultNavLinks = [
-    {title: 'about', link: '/#about'},
-    {title: 'how it works', link: '/#how-it-works'},
-    {title: 'analysis', link: '/#analysis'},
-    {title: 'login', link: '/login'}
-  ];
-
-  const loggedInNavLinks = [
-      {title: 'dashboard', link: '/dashboard'},
-      {title: 'about', link: '/about'},
-      {title: 'how it works', link: '/how-it-works'},
-      {title: 'analysis', link: '/analysis'}
-    ];
-
-  const dashboardNavLinks = [
-      {title: 'dashboard', link: '/dashboard'},
-      {title: 'exercise log', link: '/exercise-log'},
-      {title: 'add exercise', link: '/add-exercise'},
-      {title: 'badges', link: '/badges'}
-    ];
-
-  if (props.loggedIn && props.home) {
-    currentLinks = loggedInNavLinks;
-  }
-
-  else if (props.loggedIn && !props.home) {
-    currentLinks = dashboardNavLinks;
-  }
-
-  else {
-    currentLinks = defaultNavLinks;
-  }
-
-const links = currentLinks.map((link, index) =>
-<li className="nav-links" key={index}>
-  <Link to={link.link}>
-    {link.title}
-  </Link>
-</li>
-);
-
   return (
     <nav className="App-nav">
-      <ul>
-        {links}
-      </ul>
+        {
+          props.loggedIn ?
+          <ul>
+            <li className="nav-links">
+              <Link to='/dashboard'>
+                Dashboard
+              </Link>
+            </li>
+            <li className="nav-links">
+              <Link to='/exercise-log'>
+                Exercise Log
+              </Link>
+            </li>
+            <li className="nav-links">
+              <Link to='/add-exercise'>
+                Add Exercise
+              </Link>
+            </li>
+            <li className="nav-links">
+              <Link to='/badges'>
+                Badges
+              </Link>
+            </li>
+          </ul>
+          :
+          <ul>
+            <li className="nav-links">
+              <Scrollchor to='about'>
+                About
+              </Scrollchor>
+            </li>
+            <li className="nav-links">
+              <Scrollchor to='how-it-works'>
+                How It Works
+              </Scrollchor>
+            </li>
+            <li className="nav-links">
+              <Scrollchor to='analysis'>
+                Analysis
+              </Scrollchor>
+            </li>
+            <li className="nav-links" onClick={()=>props.openModal('login')}>
+              Login
+            </li>
+          </ul>
+        }
     </nav>
   );
 }

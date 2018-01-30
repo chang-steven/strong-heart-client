@@ -17,7 +17,6 @@ export const ExerciseReducer = (state = initialState, action) => {
     }
 
     case actions.ADD_EXERCISE_SUCCESS: {
-      console.log(action.response);
       alert('Successfully Added Exercise');
       return {
         ...state,
