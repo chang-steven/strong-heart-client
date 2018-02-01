@@ -4,6 +4,7 @@ const initialState = {
   error: false,
   loading: false,
   loggedIn: false,
+  authToken: null,
   redirectToReferrer: false,
   currentUser: {},
   badges: [],

@@ -7,16 +7,18 @@ import DoughnutWrapper from '../doughnut-wrapper';
 import './dashboard.css';
 
 export class Dashboard extends React.Component {
-  // componentDidMount() {
-  //   this.props.fetchExerciseLog();
-  // }
+  componentDidMount() {
+    this.props.fetchExerciseLog();
+  }
 
   render() {
     return (
       <div className="dashboard">
         <h2>Dashboard</h2>
           <section>
-            <DoughnutWrapper />
+            <DoughnutWrapper
+               // activitiesCount={this.props.exerciseStatistics.activitiesArray}
+            />
           </section>
           <section>
             <h2>Statistics</h2>
@@ -36,7 +38,6 @@ export class Dashboard extends React.Component {
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   exerciseStatistics: state.exercise.exerciseStatistics

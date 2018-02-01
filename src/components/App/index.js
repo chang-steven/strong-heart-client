@@ -29,18 +29,6 @@ const PrivateRoute = ({ component: Component, ...rest}) => {
 );
 }
 
-// const fakeAuth = {
-//   isAuthenticated: false,
-//   authenticate(cb) {
-//     this.isAuthenticated = true;
-//     setTimeout(cb, 100); // fake async
-//   },
-//   signout(cb) {
-//     this.isAuthenticated = false
-//     setTimeout(cb, 100); // fake async
-//   }
-// }
-
 export class App extends React.Component {
   constructor(props) {
     super(props);
@@ -73,13 +61,13 @@ export class App extends React.Component {
             { this.state.isModalVisible && this.state.modalName === 'login' &&
             <Modalbox
               handleClose={this.handleClose.bind(this)}>
-              <Login />
+              <Login openModal={this.open.bind(this)}/>
             </Modalbox>
             }
 
             { this.state.isModalVisible && this.state.modalName === 'signup' &&
             <Modalbox handleClose={this.handleClose.bind(this)}>
-              <SignUp />
+              <SignUp openModal={this.open.bind(this)}/>
             </Modalbox>
             }
 
@@ -96,23 +84,14 @@ export class App extends React.Component {
             </Modalbox>
             }
 
-
-            <div className='modal-example'>
-              <button onClick={this.open.bind(this, 'login')}>
-                Open Modal
-              </button>
-            </div>
-
-
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
-            <PrivateRoute path='/protected' component={Badges} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/exercise-log" component={ExerciseLog} />
-            <Route exact path="/add-exercise" component={AddExercise} />
-            <Route path="/edit-exercise" component={EditExercise} />
-            <Route exact path="/badges" component={Badges} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/exercise-log" component={ExerciseLog} />
+            <PrivateRoute exact path="/add-exercise" component={AddExercise} />
+            <PrivateRoute path="/edit-exercise" component={EditExercise} />
+            <PrivateRoute exact path="/badges" component={Badges} />
           </main>
           <Footer />
         </div>
@@ -120,6 +99,7 @@ export class App extends React.Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   loggedIn: state.user.loggedIn,
   redirectToReferrer: state.user.redirectToReferrer

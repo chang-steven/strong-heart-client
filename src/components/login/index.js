@@ -1,32 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { userLogIn, fetchExerciseLog } from '../../actions';
-import Modalbox from '../modalbox';
 
 import './login.css';
 
 export class Login extends React.Component {
-  // state = {
-  //   redirectToReferrer: false
-  // }
-
-  // login = () => {
-  //   fakeAuth.authenticate(() => {
-  //     this.setState(() => ({
-  //       redirectToReferrer: true
-  //     }))
-  //   })
-  // }
-
   onSubmit(values) {
     console.log(values);
-    this.props.userLogIn(values);
-    this.props.fetchExerciseLog();
+    this.props.dispatch(userLogIn(values));
+    // this.props.dispatch(fetchExerciseLog());
     //How to do this only on success?
     // this.props.history.push("/dashboard");
+  }
 
+  demoUserLogin() {
+    const demoUser = {
+      email: 'test4@test.com',
+      password: 'test',
+    }
+    this.props.userLogIn(demoUser);
+    // this.props.fetchExerciseLog();
+    console.log('ran user log in........');
   }
 
   render() {
@@ -38,7 +34,6 @@ export class Login extends React.Component {
           <Redirect to='/dashboard' />
         )
     }
-
 
     return (
       <form
@@ -54,9 +49,14 @@ export class Login extends React.Component {
           <Field name="password" id="password" type="password" component="input" />
           <br />
           <button type="submit">Log-in</button>
-          <p>New user? <Link to="/signup">Sign-up!</Link></p>
-          <p>Wanna just look around? <button>Test User Login</button></p>
+          <p>New user? <span onClick={()=>this.props.openModal('signup')}>Sign-up!</span></p>
 
+          <p>Wanna just look around? <button
+            onClick={(e)=>{ e.preventDefault();
+                            this.demoUserLogin();
+                          }
+                        }
+                          >Demo Login</button></p>
         </fieldset>
       </form>
     );

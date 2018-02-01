@@ -1,13 +1,14 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, ...rest}) => (
+const PrivateRoute = ({ component: Component, ...rest}) => {
+    return (
   <Route {...rest} render={(props) => (
-    this.props.loggedIn === true
+    sessionStorage.getItem('token')
       ? <Component {...props} />
       : <Redirect to='/login' />
-  )}/>
-);
+    )}/>
+  );
+}
 
 export default PrivateRoute;

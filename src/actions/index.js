@@ -1,4 +1,7 @@
 import { API_BASE_URL } from '../config';
+import jwtDecode from 'jwt-decode';
+import {saveAuthToken, clearAuthToken} from '../local-storage';
+
 
 //User Sign Up
 export const USER_SIGNUP_TRIGGERED = 'USER_SIGNUP_TRIGGERED'
@@ -28,11 +31,20 @@ export const USER_LOGIN_TRIGGERED = 'USER_LOGIN_TRIGGERED'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
 const handleSuccessUserAuthentication = (response, dispatch) => {
-    sessionStorage.setItem( "token", response.token )
+    try {
+      sessionStorage.setItem( "token", response.user.authToken )
+    }
+    catch(e) {
+      console.log(e);
+    }
+    const decodedToken = jwtDecode(response.user.authToken);
+    console.log(decodedToken);
     dispatch({
-        type: 'USER_LOGIN_SUCCESS',
-        response
+        type: USER_LOGIN_SUCCESS,
+        response,
+        decodedToken
     });
+    dispatch(fetchExerciseLog());
     // dispatch(push('/user-timelines'))
 };
 
@@ -113,6 +125,27 @@ export function editExercise(data) {
     };
 }
 
+//Add Activity
+export const ADD_ACTIVITY_TRIGGERED = 'ADD_ACTIVITY_TRIGGERED'
+export const ADD_ACTIVITY_SUCCESS = 'ADD_ACTIVITY_SUCCESS';
+export const ADD_ACTIVITY_FAILURE = 'ADD_ACTIVITY_FAILURE';
+
+export function addActivity(data) {
+    const promise = fetch(`${API_BASE_URL}/activity`,
+    {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    });
+    return {
+        onRequest: ADD_ACTIVITY_TRIGGERED,
+        onSuccess: ADD_ACTIVITY_SUCCESS,
+        onFailure: ADD_ACTIVITY_FAILURE,
+        promise,
+    };
+}
 
 
 //Fetch Badges

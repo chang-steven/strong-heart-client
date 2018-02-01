@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { Link } from 'react-router-dom';
 import { userSignUp } from '../../actions';
-
 
 export class SignUp extends React.Component {
 
@@ -28,7 +26,7 @@ export class SignUp extends React.Component {
           <label for="re-enter-password">Re-Enter Password</label>
           <Field name="re-enter-password" id="re-enter-password" type="password" component="input" />
           <button name="submit" type="submit">Sign-up</button>
-          <p>Already signed up?  <Link to="/login">Log-in!</Link></p>
+          <p>Already signed up?  <span onClick={()=> this.props.openModal('login')}>Log-in!</span></p>
         </fieldset>
       </form>
     );

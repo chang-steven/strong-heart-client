@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "chart.js": "^2.7.1",
-    "color": "^3.0.0",
+    "jquery": "^3.3.1",
+    "jwt-decode": "^2.2.0",
+    "moment": "^2.20.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-chartjs-2": "^2.7.0",
@@ -14,18 +16,22 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
-    "react-scrollable-anchor": "^0.5.0",
     "react-scrollchor": "^4.2.1",
+    "react-slick": "^0.17.1",
     "redux": "^3.7.2",
     "redux-form": "^7.2.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "REACT_APP_API_BASE_URL=http://localhost:8080/api react-scripts start",
     "build": "REACT_APP_API_BASE_URL=https://heartstrong.herokuapp.com/api  react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "jest": {
+      "setupFiles": ["setupTests.js"]
+    }
   },
   "devDependencies": {
     "enzyme": "^3.3.0",

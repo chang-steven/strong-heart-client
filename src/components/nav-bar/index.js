@@ -21,15 +21,20 @@ export function NavBar(props) {
                 Exercise Log
               </Link>
             </li>
-            <li className="nav-links">
-              <Link to='/add-exercise'>
+            <li
+              className="nav-links"
+              onClick={()=>props.openModal('add-exercise')}>
                 Add Exercise
-              </Link>
             </li>
             <li className="nav-links">
               <Link to='/badges'>
                 Badges
               </Link>
+            </li>
+            <li
+              className="nav-links"
+              onClick={()=> console.log('will log out')}>
+                Log Out
             </li>
           </ul>
           :
@@ -49,8 +54,11 @@ export function NavBar(props) {
                 Analysis
               </Scrollchor>
             </li>
+            <li className="nav-links" onClick={()=>props.openModal('signup')}>
+              Sign Up
+            </li>
             <li className="nav-links" onClick={()=>props.openModal('login')}>
-              Login
+              Login/Demo
             </li>
           </ul>
         }

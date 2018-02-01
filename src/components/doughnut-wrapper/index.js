@@ -29,7 +29,6 @@ const colorArray = [
   },
 ];
 
-
 export function DoughnutWrapper(props) {
     console.log(props);
     const colorCodeArray = colorArray.map((color) => color.colorCode);
@@ -37,7 +36,7 @@ export function DoughnutWrapper(props) {
     const countArray = [];
     props.activitiesCount.map((activity) => {
       activitiesArray.push(activity.activity);
-      countArray.push(activity.count);
+      return countArray.push(activity.count);
     });
     const data = {
       labels: activitiesArray,

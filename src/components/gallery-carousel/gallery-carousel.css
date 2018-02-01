@@ -1,0 +1,27 @@
+
+/* .inner-container {
+  position: relative;
+} */
+
+.carousel {
+  margin-top: 50px;
+  margin: 0 auto;
+  padding: 40px;
+  width: 80%;
+  color: #333;
+  background: #419be0;
+}
+
+.inner-carousel img {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.inner-carousel li {
+  max-width: fit-content;
+}
+
+.text-blurb {
+  max-width: 70%;
+  margin: 0 auto;
+}

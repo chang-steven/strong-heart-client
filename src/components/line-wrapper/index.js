@@ -5,19 +5,17 @@ import { connect } from 'react-redux';
 export class LineWrapper extends React.Component {
     render() {
 
-
     const exerciseLogArray = this.props.exerciseLog.reverse();
     const dateArray = [];
     const minutesArray = [];
 
     exerciseLogArray.map((log) => {
       dateArray.push((log.date).slice(5));
-      minutesArray.push(log.duration);
+      return minutesArray.push(log.duration);
     });
     console.log(dateArray, minutesArray);
 
     const data = {
-      // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       labels: dateArray,
       datasets: [
         {
@@ -40,20 +38,17 @@ export class LineWrapper extends React.Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: minutesArray
-          // data: [65, 59, 80, 81, 56, 55, 40]
         }
       ],
       options: {
         scales: {
           yAxes: [{
-            // display: true,
             ticks: {
-                // min: 0,
-                beginAtZero: true
+                beginAtZero: true,
               }
             }]
           }
-        }
+        },
       };
 
     return (

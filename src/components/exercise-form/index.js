@@ -1,12 +1,15 @@
 import React from 'react';
 import { reduxForm, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import { addActivity } from '../../actions';
 import './exercise-form.css';
 
 export class ExerciseForm extends React.Component {
 
   addActivity(input) {
     console.log(input);
+    this.props.addActivity({activity: input})
+
   }
 
   render() {
@@ -37,9 +40,11 @@ export class ExerciseForm extends React.Component {
             <label for="activity">Activities</label>
             {activities}
 
-            <Field type="radio" name="activity" id="other" value="other" component="input"  />
             <Field type="text" name="newActivity" placeholder="Swimming, etc." component="input"  />
-            <button onClick = {() => this.addActivity(this.props.activity)}>Add New Activity</button>
+            <button onClick = {(e) => {
+                                  e.preventDefault();
+                                  this.addActivity(this.props.activity);
+                                  }}>Add New Activity</button>
           </div>
 
           <br/>
@@ -63,4 +68,4 @@ const mapStateToProps = state => ({
 //
 // export default reduxForm({ form: 'exercise-form', enableReinitialize: true }, mapStateToProps)(Connected);
 
-export default connect(mapStateToProps)(reduxForm({ form: 'exercise-form' })(ExerciseForm));
+export default connect(mapStateToProps, { addActivity })(reduxForm({ form: 'exercise-form' })(ExerciseForm));

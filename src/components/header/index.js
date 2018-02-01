@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 function Header(props) {
   return (
     <header className="App-header">
-      <h1 className="App-title"><Link to="/">Heart Strong</Link></h1>
+      <h1 className="App-title"><Link to="/">Strong Heart</Link></h1>
     </header>
   );
 }
