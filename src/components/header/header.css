@@ -3,9 +3,24 @@
   height: 150px;
   padding: 20px;
   background-color: gray;
+  text-align: center;
 }
 
 .App-title {
   font-size: 3em;
+  display: inline-block;
+  vertical-align: middle;
   text-align: center;
+  margin-left: 10px;
+}
+
+.header-logo {
+  width: 100px;
+  display: inline-block;
+}
+
+.header-logo img {
+  width: 100%;
+  vertical-align: middle;
+
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Scrollchor from 'react-scrollchor';
+import { userLogOut } from '../../actions';
+import logo from './logo.png';
 
 import './nav-bar.css';
 
@@ -11,6 +13,11 @@ export function NavBar(props) {
         {
           props.loggedIn ?
           <ul>
+            <div id='logo'>
+              <Link to="/">
+                <img src={logo} alt='logo'/>
+              </Link>
+            </div>
             <li className="nav-links">
               <Link to='/dashboard'>
                 Dashboard
@@ -26,14 +33,14 @@ export function NavBar(props) {
               onClick={()=>props.openModal('add-exercise')}>
                 Add Exercise
             </li>
-            <li className="nav-links">
+            {/* <li className="nav-links">
               <Link to='/badges'>
                 Badges
               </Link>
-            </li>
+            </li> */}
             <li
               className="nav-links"
-              onClick={()=> console.log('will log out')}>
+              onClick={()=> props.userLogOut()}>
                 Log Out
             </li>
           </ul>
@@ -70,4 +77,4 @@ const mapStateToProps = state => ({
   loggedIn: state.user.loggedIn,
 })
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, { userLogOut })(NavBar);

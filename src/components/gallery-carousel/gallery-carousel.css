@@ -17,11 +17,16 @@
   max-width: 80%;
 }
 
+.inner-carousel {
+  position: relative;
+}
+
 .inner-carousel li {
   max-width: fit-content;
 }
 
 .text-blurb {
   max-width: 70%;
+  text-align: center;
   margin: 0 auto;
 }

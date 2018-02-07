@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "chart.js": "^2.7.1",
+    "chartjs-plugin-deferred": "^1.0.0",
+    "history": "^4.7.2",
     "jquery": "^3.3.1",
-    "jwt-decode": "^2.2.0",
+    "material-ui": "^0.20.0",
     "moment": "^2.20.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -15,9 +17,11 @@
     "react-overlays": "^0.8.3",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.0.17",
     "react-scrollchor": "^4.2.1",
     "react-slick": "^0.17.1",
+    "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
     "redux-form": "^7.2.0",
     "redux-thunk": "^2.2.0",
@@ -30,7 +34,9 @@
     "eject": "react-scripts eject",
     "flow": "flow",
     "jest": {
-      "setupFiles": ["setupTests.js"]
+      "setupFiles": [
+        "setupTests.js"
+      ]
     }
   },
   "devDependencies": {

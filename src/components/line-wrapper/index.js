@@ -1,19 +1,18 @@
 import React from 'react';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import { connect } from 'react-redux';
 
 export class LineWrapper extends React.Component {
-    render() {
+  render() {
 
-    const exerciseLogArray = this.props.exerciseLog.reverse();
-    const dateArray = [];
-    const minutesArray = [];
+    if (!this.props.exerciseLog) {
+      return null;
+    }
 
-    exerciseLogArray.map((log) => {
-      dateArray.push((log.date).slice(5));
-      return minutesArray.push(log.duration);
-    });
-    console.log(dateArray, minutesArray);
+    const exerciseLogArray = this.props.exerciseLog.slice();
+    exerciseLogArray.reverse();
+    const dateArray = exerciseLogArray.map(x => x.date.slice(5));
+    const minutesArray = exerciseLogArray.map(x => x.duration);
 
     const data = {
       labels: dateArray,
@@ -40,28 +39,40 @@ export class LineWrapper extends React.Component {
           data: minutesArray
         }
       ],
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-                beginAtZero: true,
-              }
-            }]
+    }
+
+    const options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
           }
-        },
-      };
+        }]
+      },
+      plugins: {
+        deferred: {
+          enabled: true,
+          xOffset: 150,
+          yOffset: '50%',
+          delay: 500
+        }
+      }
+    };
 
     return (
       <div>
         <h2>Exercise by Date</h2>
-        <Line data={data} />
+        <Line
+          data={data}
+          options={options}
+        />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  exerciseLog: state.exercise.exerciseLog
+  exerciseLog: state.user.exerciseLog
 });
 
 export default connect(mapStateToProps)(LineWrapper);

@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import ExerciseReducer from './exercise.reducer';
 import UserReducer from './user.reducer';
 import { reducer as formReducer } from 'redux-form';
+import { routerReducer } from 'react-router-redux'
 
 export const reducers = combineReducers({
     form: formReducer,
     user: UserReducer,
-    exercise: ExerciseReducer
+    routing: routerReducer
 });
 
 export default reducers;

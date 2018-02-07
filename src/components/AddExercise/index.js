@@ -6,16 +6,17 @@ import ExerciseForm from '../exercise-form';
 
 export class AddExercise extends React.Component {
   onSubmit(values) {
-    console.log(values);
-    console.log(this);
-    this.props.addExercise(values);
-    //How to redirect only on success?
-    this.props.history.push("/exercise-log");
+    const exerciseData = Object.assign({}, values, {userId: this.props.user});
+    this.props.addExercise(exerciseData);
+    this.props.handleClose();
   }
 
   render() {
+    if (!this.props.activities) {
+      return null;
+    }
     const title = 'Add Exercise';
-    
+
     return (
       <ExerciseForm
         formTitle={title}
@@ -27,7 +28,8 @@ export class AddExercise extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  activities: state.user.currentUser.activities
+  activities: state.user.activities,
+  user: state.user.currentUser
   });
 
 

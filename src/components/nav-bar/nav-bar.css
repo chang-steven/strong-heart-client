@@ -15,5 +15,25 @@ ul {
 
 .nav-links {
   display: inline-block;
-  margin: 20px;
+  padding: 20px;
+  color: gray;
+  cursor: pointer;
+}
+
+.nav-links a {
+  color: gray;
+}
+
+.nav-links:hover {
+  background-color: #72CD44;
+  /* color: white; */
+}
+
+#logo {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#logo img {
+  width: 50px;
 }

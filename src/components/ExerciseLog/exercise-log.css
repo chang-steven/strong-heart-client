@@ -1,12 +1,26 @@
-.exercises {
+.exercise-log {
   height: fit-content;
 }
 
-.exercise {
+.exercise-card {
   padding: 20px;
+  display: inline-block;
+  border: 1px dashed lightgray;
+  margin: 20px;
+  position: relative;
+  background-color: lightgray;
 }
 
-.exercise-menu {
+.exercise-card h3 {
+  display: inline-block;
+}
+
+.dot-menu {
   text-align: right;
-  border: 1px dotted gray;
+  display: inline-block;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  margin: 0;
+  padding: 0;
 }

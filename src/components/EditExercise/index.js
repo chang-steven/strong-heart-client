@@ -3,18 +3,16 @@ import { connect } from 'react-redux';
 import ExerciseForm from '../exercise-form';
 import { editExercise } from '../../actions';
 
-
 export class EditExercise extends React.Component {
 
   onSubmit(values) {
     this.props.editExercise(values);
+    this.props.handleClose();
   }
 
   render() {
-    const url = window.location.pathname;
-    const exerciseId = url.substring(url.lastIndexOf('/') + 1);
-    let exercise = this.props.exerciseLog.filter(exercise => exercise._id === exerciseId);
-    const initialValues = exercise[0];
+    let exercise = this.props.exerciseLog.find(exercise => exercise._id === this.props.exerciseId);
+    const initialValues = exercise;
     const title = 'Edit Exercise';
 
     return (
@@ -29,8 +27,8 @@ export class EditExercise extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  exerciseLog: state.exercise.exerciseLog,
-  activities: state.user.currentUser.activities
+  exerciseLog: state.user.exerciseLog,
+  activities: state.user.activities
 });
 
 export default connect(mapStateToProps, { editExercise })(EditExercise);

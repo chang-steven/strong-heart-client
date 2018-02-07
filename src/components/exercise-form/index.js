@@ -3,16 +3,16 @@ import { reduxForm, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { addActivity } from '../../actions';
 import './exercise-form.css';
+import { required } from '../../validators';
 
 export class ExerciseForm extends React.Component {
 
   addActivity(input) {
-    console.log(input);
-    this.props.addActivity({activity: input})
-
+    this.props.addActivity({activity: input});
   }
 
   render() {
+
     console.log(this.props.activity);
     const activities = this.props.activities.map( activity => {
 
@@ -22,22 +22,46 @@ export class ExerciseForm extends React.Component {
       const capitalActivity = capitalizeFirstLetter(activity);
       return (
       <div>
-        <Field type="radio" name="activity" id={activity} value={activity} component="input" />
-        <label for="activity">{capitalActivity}</label>
+        <Field
+          type="radio"
+          name="activity"
+          value={activity}
+          component="input"
+        />
+        <label htmlFor="activity">{capitalActivity}</label>
       </div>
     )
   });
+
+  const renderField = ({
+    input,
+    label,
+    type,
+    meta: { touched, error, warning }
+  }) => (
+    <div className='form-field'>
+      <label>{label}</label>
+      <div className='form-input'>
+        <input {...input} placeholder={label} type={type} />
+        {touched &&
+          ((error && <span>{error}</span>) ||
+          (warning && <span>{warning}</span>))}
+        </div>
+      </div>
+    )
 
     return (
       <form className="add-exercise form" onSubmit = {this.props.handleSubmit(this.props.onSubmit)}>
         <fieldset>
           <legend>{this.props.formTitle}</legend>
-          <label for="date">Date</label>
-          <Field name="date" id="date" type="date" component="input" />
-          <button name ="today" type="button">Today</button>
-          <br />
+          <Field
+            name="date"
+            type="date"
+            label="Date"
+            validate={required}
+            component={renderField} />
           <div id="activities">
-            <label for="activity">Activities</label>
+            <label htmlFor="activity">Activities</label>
             {activities}
 
             <Field type="text" name="newActivity" placeholder="Swimming, etc." component="input"  />
@@ -46,12 +70,16 @@ export class ExerciseForm extends React.Component {
                                   this.addActivity(this.props.activity);
                                   }}>Add New Activity</button>
           </div>
-
-          <br/>
-          <label for="duration">How long?</label>
-          <Field name="duration" id="duration" type="number" component="input" placeholder="in mins" />
+          <Field
+            name="duration"
+            type="number"
+            label="How long?"
+            component={renderField}
+            placeholder="in mins"
+            validate={required}
+          />
           <br />
-          <button type="submit" name="submit">Add Exercise</button>
+          <button type="submit" name="submit">{this.props.formTitle}</button>
         </fieldset>
       </form>
     );

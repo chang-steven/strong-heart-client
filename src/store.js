@@ -2,10 +2,15 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import promiseMiddleware from './promise-middleware';
-// import {loadAuthToken} from './local-storage';
 import reducers from './reducers';
 
-const middlewares = [ thunk, promiseMiddleware, logger ];
+import { routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
+export const history = createHistory();
+
+// import {loadAuthToken} from './local-storage';
+
+const middlewares = [ thunk, promiseMiddleware, logger, routerMiddleware(history) ];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(

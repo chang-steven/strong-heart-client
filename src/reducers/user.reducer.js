@@ -4,9 +4,10 @@ const initialState = {
   error: false,
   loading: false,
   loggedIn: false,
-  authToken: null,
-  redirectToReferrer: false,
+  activities: [],
   currentUser: {},
+  exerciseLog: [],
+  exerciseStatistics: {},
   badges: [],
 };
 
@@ -20,7 +21,6 @@ export const UserReducer = (state = initialState, action) => {
     }
 
     case actions.USER_SIGNUP_SUCCESS: {
-      alert('Succesfully Signed Up!');
       return {
         ...state,
         loading: false
@@ -30,23 +30,75 @@ export const UserReducer = (state = initialState, action) => {
     case actions.USER_SIGNUP_FAILURE: {
       return {
         ...state,
-        loading: true
+        loading: false
       }
     }
 
     case actions.USER_LOGIN_SUCCESS: {
       return {
         ...state,
-        currentUser: action.response.user,
         loggedIn: true,
-        redirectToReferrer: true
+        activities: action.response.activities,
+        currentUser: action.response.currentUser,
+        exerciseLog: action.response.exerciseLog,
+        exerciseStatistics: action.response.exerciseStatistics,
       }
     }
 
-    case actions.FETCH_BADGES_SUCCESS: {
+    case actions.USER_LOGOUT_SUCCESS: {
       return {
         ...state,
-        badges: action.response,
+        loggedIn: false
+      }
+    }
+
+    case actions.FETCH_USERINFO_TRIGGERED: {
+      return {
+        ...state,
+        loading: true
+      }
+    }
+
+    case actions.FETCH_USERINFO_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        loggedIn: true,
+        activities: action.response.activities,
+        currentUser: action.response.currentUser,
+        exerciseLog: action.response.exerciseLog,
+        exerciseStatistics: action.response.exerciseStatistics,
+
+      }
+    }
+
+    case actions.FETCH_USERINFO_FAILURE: {
+      return {
+        ...state,
+        loading: false
+      }
+    }
+
+    case actions.ADD_EXERCISE_SUCCESS: {
+      return {
+        ...state,
+        exerciseLog: action.response.exerciseLog,
+        exerciseStatistics: action.response.exerciseStatistics
+      }
+    }
+
+    case actions.EDIT_EXERCISE_SUCCESS: {
+      return {
+        ...state,
+        exerciseLog: action.response.exerciseLog,
+        exerciseStatistics: action.response.exerciseStatistics
+      }
+    }
+
+    case actions.ADD_ACTIVITY_SUCCESS: {
+      return {
+        ...state,
+        activities: action.response.activities
       }
     }
 

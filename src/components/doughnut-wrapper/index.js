@@ -31,12 +31,16 @@ const colorArray = [
 
 export function DoughnutWrapper(props) {
     console.log(props);
+    if (!props.activitiesArray) {
+      return null;
+    }
+
     const colorCodeArray = colorArray.map((color) => color.colorCode);
     const activitiesArray = [];
     const countArray = [];
-    props.activitiesCount.map((activity) => {
+    props.activitiesArray.forEach((activity) => {
       activitiesArray.push(activity.activity);
-      return countArray.push(activity.count);
+      countArray.push(activity.count);
     });
     const data = {
       labels: activitiesArray,
@@ -56,7 +60,7 @@ export function DoughnutWrapper(props) {
 }
 
 const mapStateToProps = state => ({
-  activitiesCount: state.exercise.exerciseStatistics.activitiesArray
+  activitiesArray: state.user.exerciseStatistics.activitiesArray
 })
 
 export default connect(mapStateToProps)(DoughnutWrapper)
