@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { userSignUp, userLogIn } from '../../actions';
-import {required, email, nonEmpty, matches, length, isTrimmed} from '../../validators';
+import {required, nonEmpty, matches, isTrimmed, maxLength15, minLength6} from '../../validators';
 import './signup.css';
+
 
 export class SignUp extends React.Component {
 
@@ -43,14 +44,14 @@ export class SignUp extends React.Component {
               type="email"
               label="Email"
               component={renderField}
-              validate={[email, required]}
+              validate={[required]}
             />
             <Field
               name="password"
               type="password"
               label="Password"
               component={renderField}
-              validate={[required, length({min: 10, max: 72}), isTrimmed]}
+              validate={[required, minLength6, maxLength15, isTrimmed]}
 
             />
             <Field

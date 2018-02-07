@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from '../header';
 import NavBar from '../nav-bar';
 import Loader from '../loader';
@@ -38,8 +38,6 @@ export class App extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-
     return (
         <div className="App">
           <Header />

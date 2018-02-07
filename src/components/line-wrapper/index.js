@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { connect } from 'react-redux';
+import 'chartjs-plugin-deferred';
 
 export class LineWrapper extends React.Component {
   render() {
@@ -51,10 +52,7 @@ export class LineWrapper extends React.Component {
       },
       plugins: {
         deferred: {
-          enabled: true,
-          xOffset: 150,
           yOffset: '50%',
-          delay: 500
         }
       }
     };

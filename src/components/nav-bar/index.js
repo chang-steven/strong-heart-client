@@ -33,11 +33,6 @@ export function NavBar(props) {
               onClick={()=>props.openModal('add-exercise')}>
                 Add Exercise
             </li>
-            {/* <li className="nav-links">
-              <Link to='/badges'>
-                Badges
-              </Link>
-            </li> */}
             <li
               className="nav-links"
               onClick={()=> props.userLogOut()}>
