@@ -1,7 +1,21 @@
-#activities {
+.activities {
   text-align: left;
+  -moz-column-count: 2;
+   -webkit-column-count: 2;
+   column-count: 2;
 }
 
-fieldset {
-  margin: 20px;
+.add-exercise {
+  width: 480px;
+}
+
+.form-label {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+#activities-title {
+  display: block;
+  text-align: left;
+  margin-left: 30px;
 }

@@ -3,18 +3,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import Header from '../header';
-import NavBar from '../nav-bar';
-import Loader from '../loader';
+import Header from '../../components/header';
+// import ResponsiveNav from '../../components/responsive-nav';
+import NavBar from '../../components/nav-bar';
+import Loader from '../../components/loader';
 import Home from '../Home';
 import Dashboard from '../Dashboard';
 import ExerciseLog from '../ExerciseLog';
 import AddExercise from '../AddExercise';
-import Footer from '../footer';
-import Login from '../login';
-import SignUp from '../signup';
-import Modalbox from '../modalbox';
-import PrivateRoute from '../private-route';
+import Footer from '../../components/footer';
+import Login from '../../components/login';
+import SignUp from '../../components/signup';
+import Modalbox from '../../components/modalbox';
+import PrivateRoute from '../../components/private-route';
 import './app.css';
 
 export class App extends React.Component {
@@ -40,8 +41,9 @@ export class App extends React.Component {
   render() {
     return (
         <div className="App">
-          <Header />
+          {/* <ResponsiveNav /> */}
           <NavBar openModal={this.open.bind(this)} />
+          <Header />
           <main role="main">
 
             { this.state.isModalVisible && this.state.modalName === 'login' &&

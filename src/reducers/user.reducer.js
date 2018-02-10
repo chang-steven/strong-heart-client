@@ -1,7 +1,9 @@
 import * as actions from '../actions';
 
 const initialState = {
-  error: false,
+  errorSignUp: false,
+  errorLogIn: false,
+  errorAddActivity: false,
   loading: false,
   loggedIn: false,
   activities: [],
@@ -16,32 +18,51 @@ export const UserReducer = (state = initialState, action) => {
     case actions.USER_SIGNUP_TRIGGERED: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        errorSignUp: false,
       }
     }
 
     case actions.USER_SIGNUP_SUCCESS: {
       return {
         ...state,
-        loading: false
+        loading: false,
       }
     }
 
     case actions.USER_SIGNUP_FAILURE: {
       return {
         ...state,
-        loading: false
+        loading: false,
+        errorSignUp: true,
+      }
+    }
+
+    case actions.USER_LOGIN_TRIGGERED: {
+      return {
+        ...state,
+        loading: true,
+        errorLogIn: false,
       }
     }
 
     case actions.USER_LOGIN_SUCCESS: {
       return {
         ...state,
+        loading: false,
         loggedIn: true,
         activities: action.response.activities,
         currentUser: action.response.currentUser,
         exerciseLog: action.response.exerciseLog,
         exerciseStatistics: action.response.exerciseStatistics,
+      }
+    }
+
+    case actions.USER_LOGIN_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        errorLogIn: true,
       }
     }
 
@@ -95,10 +116,24 @@ export const UserReducer = (state = initialState, action) => {
       }
     }
 
+    case actions.ADD_ACTIVITY_TRIGGERED: {
+      return {
+        ...state,
+        errorAddActivity: false,
+      }
+    }
+
     case actions.ADD_ACTIVITY_SUCCESS: {
       return {
         ...state,
         activities: action.response.activities
+      }
+    }
+
+    case actions.ADD_ACTIVITY_FAILURE: {
+      return {
+        ...state,
+        errorAddActivity: true,
       }
     }
 

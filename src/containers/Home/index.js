@@ -1,13 +1,13 @@
 import React from 'react';
-import GalleryCarousel from '../gallery-carousel';
+import ReactCarousel from '../../components/carousel';
+import dashboard from './dashboard.jpeg';
 import './home.css';
 
 export default function Home(props) {
 
   return (
     <div className="home" id="about">
-      <GalleryCarousel />
-
+      <ReactCarousel />
       <section id='how-it-works'>
         <h2 className="section-title">How It Works</h2>
         <div>
@@ -17,7 +17,7 @@ export default function Home(props) {
       <section id='analysis'>
         <h2 className="section-title">Analysis</h2>
         <div>
-          <img src='http://via.placeholder.com/400x200' alt='placeholder'/>
+          <img src={dashboard} alt='dashboard'/>
         </div>
       </section>
     </div>

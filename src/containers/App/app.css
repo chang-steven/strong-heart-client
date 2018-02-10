@@ -1,8 +1,6 @@
 .App {
   min-height: 100%;
   position: relative;
-}
-
-main {
-  padding-bottom: 75px;
+  margin: 0;
+  padding: 0;
 }

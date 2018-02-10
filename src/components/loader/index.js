@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUserInfo } from '../../actions';
+import { loadAuthToken } from '../../helpers/local-storage';
 import './bar-loader.css';
 
 export class Loader extends React.Component {
   componentDidMount() {
-    const token = sessionStorage.getItem('token');
+    const token = loadAuthToken();
     if (token) {
       this.props.fetchUserInfo();
     }
@@ -16,7 +17,7 @@ export class Loader extends React.Component {
         <div>
           {
             this.props.loading ?
-            <div className='loader'>
+            <div className="loader">
             </div>
           :
           <div>

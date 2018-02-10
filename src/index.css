@@ -1,12 +1,20 @@
 * {
-  box-sizing: border-border-box;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  /* margin: 0 auto; */
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
   height: 100%;
+  min-width: 480px;
+  text-align: center;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 97px;
 }
 
 a {
@@ -14,5 +22,43 @@ a {
 }
 
 section {
+  height: fit-content;
+  margin: 40px auto;
+  padding-bottom: 40px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%
+}
+
+form {
+  margin: 0 auto;
+  /* padding: 10px; */
   text-align: center;
+  height: fit-content;
+  width: 450px;
+}
+
+form button {
+  margin: 4px;
+}
+
+fieldset {
+  margin: 20px;
+}
+
+input, label {
+  margin: 10px;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+
+.error {
+  margin: 10px;
+  color: red;
 }

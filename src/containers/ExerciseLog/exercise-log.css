@@ -3,6 +3,8 @@
 }
 
 .exercise-card {
+  width: 155px;
+  font-size: 1.1em;
   padding: 20px;
   display: inline-block;
   border: 1px dashed lightgray;

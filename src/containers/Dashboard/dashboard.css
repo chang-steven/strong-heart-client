@@ -1,0 +1,38 @@
+.dashboard img {
+  /* width: 500px; */
+}
+
+.no-data {
+  text-align: center;
+}
+
+.statistics {
+  border: 1px solid gray;
+  max-width: 400px;
+  padding: 12px;
+}
+
+.statistics span {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+
+
+.doughnut {
+  max-width: 600px;
+  width: 100%;
+}
+
+.doughnut, .statistics {
+  display: inline-block;
+  margin: 0;
+}
+
+.chartjs-render-monitor {
+  display: inline-block;
+}
+
+.line {
+  margin: 40px auto;
+}

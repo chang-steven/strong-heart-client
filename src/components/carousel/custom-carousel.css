@@ -1,0 +1,26 @@
+.carousel-holder {
+  margin: 20px;
+  cursor: -webkit-grab;
+}
+
+/* .carousel-holder img {
+  width: 100%;
+} */
+
+#blurb {
+  font-size: 1.5em;
+  text-align: left;
+  /* margin: 0 auto; */
+}
+.carousel .slide {
+  background: gainsboro;
+}
+
+#blurb ul {
+  list-style: none;
+}
+
+.inner {
+  width: 70%;
+  margin: auto;
+}

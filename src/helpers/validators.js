@@ -14,14 +14,11 @@ export const minLength = min => value =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined
 export const minLength6 = minLength(6)
 
-// export const length = length => value => {
-//     if (length.min && value.length < length.min) {
-//         return `Must be at least ${length.min} characters long`;
-//     }
-//     if (length.max && value.length > length.max) {
-//         return `Must be at most ${length.max} characters long`;
-//     }
-// };
+export const alphaNumeric = value =>
+  value && /[^a-zA-Z0-9 ]/i.test(value)
+    ? 'Only alphanumeric characters'
+    : undefined
+
 export const matches = field => (value, allValues) =>
     field in allValues && value.trim() === allValues[field].trim()
         ? undefined

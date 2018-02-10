@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Scrollchor from 'react-scrollchor';
+
 import { userLogOut } from '../../actions';
 import logo from './logo.png';
-
 import './nav-bar.css';
 
 export function NavBar(props) {
@@ -13,48 +13,37 @@ export function NavBar(props) {
         {
           props.loggedIn ?
           <ul>
-            <div id='logo'>
-              <Link to="/">
-                <img src={logo} alt='logo'/>
-              </Link>
+            <div id="logo">
+              <Link to="/"><img src={logo} alt="logo"/></Link>
             </div>
             <li className="nav-links">
-              <Link to='/dashboard'>
-                Dashboard
-              </Link>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
             <li className="nav-links">
-              <Link to='/exercise-log'>
-                Exercise Log
-              </Link>
+              <Link to="/exercise-log">Exercise Log</Link>
             </li>
             <li
               className="nav-links"
-              onClick={()=>props.openModal('add-exercise')}>
-                Add Exercise
+              onClick={()=>props.openModal('add-exercise')}>Add Exercise
             </li>
             <li
               className="nav-links"
-              onClick={()=> props.userLogOut()}>
-                Log Out
+              onClick={()=> props.userLogOut()}>Log Out
             </li>
           </ul>
           :
           <ul>
+            <div id="logo">
+              <Link to="/"><img src={logo} alt="logo"/></Link>
+            </div>
             <li className="nav-links">
-              <Scrollchor to='about'>
-                About
-              </Scrollchor>
+              <Scrollchor to="about">About</Scrollchor>
             </li>
             <li className="nav-links">
-              <Scrollchor to='how-it-works'>
-                How It Works
-              </Scrollchor>
+              <Scrollchor to="how-it-works">How It Works</Scrollchor>
             </li>
             <li className="nav-links">
-              <Scrollchor to='analysis'>
-                Analysis
-              </Scrollchor>
+              <Scrollchor to="analysis">Analysis</Scrollchor>
             </li>
             <li className="nav-links" onClick={()=>props.openModal('signup')}>
               Sign Up

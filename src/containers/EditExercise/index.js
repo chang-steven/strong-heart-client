@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ExerciseForm from '../exercise-form';
+import ExerciseForm from '../../components/exercise-form';
 import { editExercise } from '../../actions';
 
 export class EditExercise extends React.Component {

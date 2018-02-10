@@ -7,8 +7,9 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+// import  { Prompt } from 'react-router';
 
-import Modalbox from '../modalbox';
+import Modalbox from '../../components/modalbox';
 import EditExercise from '../EditExercise';
 import Moment from 'react-moment';
 import './exercise-log.css';
@@ -20,7 +21,8 @@ export class ExerciseLog extends React.Component {
 
     this.state = {
       isModalVisible: false,
-      currentlyEditedId: null
+      currentlyEditedId: null,
+      // showDeletePrompt: false,
     };
   }
 
@@ -39,9 +41,8 @@ export class ExerciseLog extends React.Component {
   }
 
   deleteExercise(id) {
-    alert('Are you sure you want to delete?');
+    prompt('Are you sure you want to delete?');
     const deleteId = { id };
-    console.log(deleteId);
     this.props.deleteExercise(deleteId);
   }
 
@@ -49,8 +50,19 @@ export class ExerciseLog extends React.Component {
     if (!this.props.exerciseLog) {
       return null;
     }
-    console.log(this.props);
-    const exerciseLog  = this.props.exerciseLog.map((exercise, index) => (
+
+    else if (this.props.exerciseLog.length === 0) {
+      return (
+        <div className='no-data'><h3>Looks like you need to get started with some exercise!</h3></div>
+      )
+    }
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+    const exerciseLog  = this.props.exerciseLog.map((exercise, index) => {
+      const capitalActivity = capitalizeFirstLetter(exercise.activity);
+      return (
       <div className="exercise-card" key={index}>
         <h3>{exercise.duration}m</h3>
         <div className='dot-menu'>
@@ -72,12 +84,10 @@ export class ExerciseLog extends React.Component {
             </IconMenu>
           </div>
           <p><Moment format="MM-DD-YY">{exercise.date}</Moment></p>
-          <h3>{exercise.activity}</h3>
-
+          <h3>{capitalActivity}</h3>
         </div>
       )
-    );
-
+    });
 
     return (
       <div>

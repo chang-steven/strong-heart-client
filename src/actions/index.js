@@ -1,6 +1,6 @@
 import { API_BASE_URL } from '../config';
 import { push } from 'react-router-redux';
-import { loadAuthToken, saveAuthToken, clearAuthToken } from '../local-storage';
+import { loadAuthToken, saveAuthToken, clearAuthToken } from '../helpers/local-storage';
 
 
 //User Sign Up
@@ -8,7 +8,7 @@ export const USER_SIGNUP_TRIGGERED = 'USER_SIGNUP_TRIGGERED'
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
 export const USER_SIGNUP_FAILURE = 'USER_SIGNUP_FAILURE';
 
-export function userSignUp(data) {
+export function userSignUp(data, cb) {
     const promise = fetch(`${API_BASE_URL}/signup`,
     {
       method: 'POST',
@@ -29,16 +29,17 @@ export function userSignUp(data) {
 export const USER_LOGIN_TRIGGERED = 'USER_LOGIN_TRIGGERED'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
-const handleSuccessUserAuthentication = (response, dispatch) => {
+const handleSuccessUserAuthentication = (cb, response, dispatch) => {
     saveAuthToken(response.authToken);
     dispatch({
         type: USER_LOGIN_SUCCESS,
         response,
     });
+    cb();
     dispatch(push('/dashboard'));
 };
 
-export function userLogIn(data) {
+export function userLogIn(data, cb) {
     const promise = fetch(`${API_BASE_URL}/login`,
     {
       method: 'POST',
@@ -49,7 +50,7 @@ export function userLogIn(data) {
     });
     return {
         onRequest: USER_LOGIN_TRIGGERED,
-        onSuccess: handleSuccessUserAuthentication,
+        onSuccess: handleSuccessUserAuthentication.bind(null, cb),
         onFailure: USER_LOGIN_FAILURE,
         promise,
     };
@@ -166,21 +167,6 @@ export function deleteExercise(data) {
         promise,
     };
 }
-
-// //Fetch Badges
-// export const FETCH_BADGES_TRIGGERED = 'FETCH_BADGES_TRIGGERED';
-// export const FETCH_BADGES_SUCCESS = 'FETCH_BADGES_SUCCESS';
-// export const FETCH_BADGES_FAILURE = 'FETCH_BADGES_FAILURE';
-//
-// export function fetchBadges() {
-//     const promise = fetch(`${API_BASE_URL}/badges`);
-//     return {
-//         onRequest: FETCH_BADGES_TRIGGERED,
-//         onSuccess: FETCH_BADGES_SUCCESS,
-//         onFailure: FETCH_BADGES_FAILURE,
-//         promise,
-//     };
-// }
 
 //Fetch Exercise Log
 export const FETCH_USERINFO_TRIGGERED = 'FETCH_USERINFO_TRIGGERED'

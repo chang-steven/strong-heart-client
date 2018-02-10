@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addExercise } from '../../actions';
-import ExerciseForm from '../exercise-form';
+import ExerciseForm from '../../components/exercise-form';
 
 
 export class AddExercise extends React.Component {

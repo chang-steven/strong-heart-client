@@ -58,7 +58,7 @@ export class LineWrapper extends React.Component {
     };
 
     return (
-      <div>
+      <div className="line-wrapper">
         <h2>Exercise by Date</h2>
         <Line
           data={data}

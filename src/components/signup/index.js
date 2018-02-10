@@ -2,84 +2,75 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { userSignUp, userLogIn } from '../../actions';
-import {required, nonEmpty, matches, isTrimmed, maxLength15, minLength6} from '../../validators';
+import {required, nonEmpty, matches, isTrimmed, maxLength15, minLength6} from '../../helpers/validators';
+import Input from '../input';
 import './signup.css';
-
 
 export class SignUp extends React.Component {
 
   onSubmit(values) {
-    this.props.userSignUp(values)
-    .then(() => this.props.userLogIn(values));
-    this.props.handleClose();
+    this.props.userSignUp(values).then(() => this.props.userLogIn(values, this.props.handleClose));
   }
 
   render() {
-    const renderField = ({
-      input,
-      label,
-      type,
-      meta: { touched, error, warning }
-    }) => (
-      <div className='form-field'>
-        <label>{label}</label>
-        <div className='form-input'>
-          <input {...input} placeholder={label} type={type} />
-          {touched &&
-            ((error && <span>{error}</span>) ||
-            (warning && <span>{warning}</span>))}
-          </div>
-        </div>
-      )
-
       const { handleSubmit, pristine, reset, submitting } = this.props
       return (
-        <form
-          className="signup form"
-          onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <fieldset>
-            <legend>Sign-up</legend>
-            <Field
-              name="email"
-              type="email"
-              label="Email"
-              component={renderField}
-              validate={[required]}
-            />
-            <Field
-              name="password"
-              type="password"
-              label="Password"
-              component={renderField}
-              validate={[required, minLength6, maxLength15, isTrimmed]}
+        <div>
 
-            />
-            <Field
-              name="re-enter-password"
-              type="password"
-              label="Re-Enter Password"
-              component={renderField}
-              validate={[required, nonEmpty, matches('password')]}
+          <form
+            className="signup form"
+            onSubmit={handleSubmit(this.onSubmit.bind(this))}
+            >
+            <fieldset>
+              <legend>Sign-up</legend>
+              {/* <label htmlFor="email">Email</label> */}
+              <Field
+                name="email"
+                type="email"
+                label="Email"
+                component={Input}
+                validate={[required]}
+              />
+              {/* <label htmlFor="password">Password</label> */}
+              <Field
+                name="password"
+                type="password"
+                label="Password"
+                component={Input}
+                validate={[required, minLength6, maxLength15, isTrimmed]}
 
-            />
-            <div>
-              <button type="submit" disabled={submitting}>
-                Submit
-              </button>
-              <button type="button" disabled={pristine || submitting} onClick={reset}>
-                Clear Values
-              </button>
-              <p>Already signed up?  <span className='nav-links' onClick={()=> this.props.openModal('login')}>Log-in!</span></p>
-            </div>
-          </fieldset>
-        </form>
+              />
+              {/* <label htmlFor="re-enter-password">Re-Enter Password</label> */}
+              <Field
+                name="confirm-password"
+                type="password"
+                label="Confirm Password"
+                component={Input}
+                validate={[required, nonEmpty, matches('password')]}
+
+              />
+              <div>
+                <button type="submit" disabled={submitting}>
+                  Submit
+                </button>
+                <button type="button" disabled={pristine || submitting} onClick={reset}>
+                  Clear Values
+                </button>
+
+                {this.props.errorSignUp && <div className="error">Seems like there was a problem, try again.</div>}
+
+                <p>Already signed up?  <span className='nav-links' onClick={()=> this.props.openModal('login')}>Log-in!</span></p>
+              </div>
+            </fieldset>
+          </form>
+        </div>
       )
     }
   }
 
   const mapStateToProps = state => ({
-    // user: state.form.user
-  })
+    errorSignUp: state.user.errorSignUp
+  });
 
   SignUp = connect(mapStateToProps, { userSignUp, userLogIn })(SignUp);
 

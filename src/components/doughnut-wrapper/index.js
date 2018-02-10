@@ -26,22 +26,40 @@ const colorArray = [
   {
     label: 'Blue',
     colorCode: '#36a2eb'
+  },{
+    label: 'Red',
+    colorCode: '#FF6384'
+  },
+  {
+    label: 'Yellow',
+    colorCode: '#FFCE56'
+  },
+  {
+    label: 'Green',
+    colorCode: '#4FBFBF'
+  },
+  {
+    label: 'Purple',
+    colorCode: '#cc65fe'
+  },
+  {
+    label: 'Orange',
+    colorCode: '#FEA14B'
+  },
+  {
+    label: 'Blue',
+    colorCode: '#36a2eb'
   },
 ];
 
 export function DoughnutWrapper(props) {
-    console.log(props);
     if (!props.activitiesArray) {
       return null;
     }
 
     const colorCodeArray = colorArray.map((color) => color.colorCode);
-    const activitiesArray = [];
-    const countArray = [];
-    props.activitiesArray.forEach((activity) => {
-      activitiesArray.push(activity.activity);
-      countArray.push(activity.count);
-    });
+    const activitiesArray = props.activitiesArray.map(activity => activity.activity);
+    const countArray = props.activitiesArray.map(activity => activity.count);
     const data = {
       labels: activitiesArray,
       datasets: [{
@@ -52,9 +70,13 @@ export function DoughnutWrapper(props) {
     };
 
     return (
-        <div>
+        <div className="doughnut-wrapper">
           <h2>Activity Types</h2>
-          <Doughnut data={data} />
+          <Doughnut
+            id="doughnutChart"
+            className="donut"
+            data={data}
+           />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 .App-footer {
-  height: 35px;
+  /* height: 35px; */
   width: 100%;
   padding: 20px;
   background-color: gray;
@@ -7,6 +7,15 @@
   bottom: 0;
 }
 
-p {
+.App-footer p {
   text-align: center;
+  vertical-align: middle;
+}
+
+#github-icon {
+  font-size: 1.5em;
+}
+
+#github-icon:hover {
+  color: orange;
 }
