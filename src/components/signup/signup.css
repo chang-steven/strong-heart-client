@@ -5,3 +5,11 @@
 .form-input {
   display: inline-block;
 }
+
+.form-tag {
+  color: #63b539;
+}
+
+.form-tag:hover {
+  cursor: pointer;
+}

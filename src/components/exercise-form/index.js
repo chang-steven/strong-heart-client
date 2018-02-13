@@ -59,7 +59,7 @@ export class ExerciseForm extends React.Component {
             placeholder="Swimming, etc."
             component="input"
           />
-          <button onClick={(e) => this.handleClick(e)}>Add New Activity</button>
+          <button className="hvr-bounce-in" onClick={(e) => this.handleClick(e)}>Add New Activity</button>
           {this.props.errorAddActivity && <div className="error">Please enter a valid activity</div>}
 
           <Field
@@ -71,7 +71,7 @@ export class ExerciseForm extends React.Component {
             validate={required}
           />
           <br />
-          <button type="submit" name="submit">{this.props.formTitle}</button>
+          <button className="hvr-bounce-in" type="submit" name="submit">{this.props.formTitle}</button>
         </fieldset>
       </form>
     );

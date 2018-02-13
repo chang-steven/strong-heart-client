@@ -20,30 +20,39 @@ export class ExerciseLog extends React.Component {
     super(props);
 
     this.state = {
-      isModalVisible: false,
-      currentlyEditedId: null,
-      // showDeletePrompt: false,
+      isEditVisible: false,
+      isDeleteVisible: false,
+      currentExerciseId: null,
     };
   }
 
   handleClose(){
     this.setState({
-      isModalVisible: false,
-      currentlyEditedId: null,
+      isEditVisible: false,
+      isDeleteVisible: false,
+      currentExerciseId: null,
     });
   }
 
-  openModal(exerciseId){
+  openEditModal(exerciseId){
     this.setState({
-      isModalVisible: true,
-      currentlyEditedId: exerciseId
+      isEditVisible: true,
+      currentExerciseId: exerciseId
     });
   }
 
-  deleteExercise(id) {
-    prompt('Are you sure you want to delete?');
-    const deleteId = { id };
-    this.props.deleteExercise(deleteId);
+  openDeleteModal(exerciseId) {
+    console.log('opening delete modal', exerciseId);
+    this.setState({
+      isDeleteVisible: true,
+      currentExerciseId: exerciseId
+    })
+  }
+
+  deleteExercise() {
+    console.log('deleting exercise');
+    const deleteId = { id: this.state.currentExerciseId};
+    this.props.deleteExercise(deleteId, this.handleClose.bind(this));
   }
 
   render() {
@@ -64,7 +73,7 @@ export class ExerciseLog extends React.Component {
       const capitalActivity = capitalizeFirstLetter(exercise.activity);
       return (
       <div className="exercise-card" key={index}>
-        <h3>{exercise.duration}m</h3>
+        <h3 className="duration">{exercise.duration}m</h3>
         <div className='dot-menu'>
           <IconMenu
             iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
@@ -74,17 +83,18 @@ export class ExerciseLog extends React.Component {
               <MenuItem
                 primaryText="edit"
                 onClick={()=> {
-                  this.openModal(exercise._id)
+                  this.openEditModal(exercise._id)
                 }}
               />
               <MenuItem
                 primaryText="delete"
-                onClick={()=>this.deleteExercise(exercise._id)}
+                onClick={()=>this.openDeleteModal(exercise._id)}
+                // onClick={()=>this.deleteExercise(exercise._id)}
               />
             </IconMenu>
           </div>
-          <p><Moment format="MM-DD-YY">{exercise.date}</Moment></p>
-          <h3>{capitalActivity}</h3>
+          <p className="date"><Moment format="MM-DD-YY">{exercise.date}</Moment></p>
+          <h3 className="activity-title">{capitalActivity}</h3>
         </div>
       )
     });
@@ -97,16 +107,31 @@ export class ExerciseLog extends React.Component {
             {exerciseLog}
           </section>
 
-          { this.state.isModalVisible && this.state.currentlyEditedId &&
+          { this.state.isEditVisible && this.state.currentExerciseId &&
             <Modalbox
               handleClose={this.handleClose.bind(this)}
               >
                 <EditExercise
-                  exerciseId={this.state.currentlyEditedId}
+                  exerciseId={this.state.currentExerciseId}
                   handleClose={this.handleClose.bind(this)}
                 />
               </Modalbox>
             }
+
+            { this.state.isDeleteVisible && this.state.currentExerciseId &&
+              <Modalbox
+                handleClose={this.handleClose.bind(this)}
+                >
+                  <p>Are you sure you want to delete?</p>
+                  <button
+                    className="button"
+                    onClick={()=>this.handleClose()}>Cancel</button>
+                  <button
+                    className="button"
+                    onClick={()=>this.deleteExercise()}>Confirm</button>
+                </Modalbox>
+              }
+
           </MuiThemeProvider>
         </div>
       );

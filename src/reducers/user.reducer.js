@@ -116,6 +116,14 @@ export const UserReducer = (state = initialState, action) => {
       }
     }
 
+    case actions.DELETE_EXERCISE_SUCCESS: {
+      return {
+        ...state,
+        exerciseLog: action.response.exerciseLog,
+        exerciseStatistics: action.response.exerciseStatistics
+      }
+    }
+
     case actions.ADD_ACTIVITY_TRIGGERED: {
       return {
         ...state,

@@ -189,7 +189,7 @@
       padding: 10px;
       font-size: 12px;
       text-align: center;
-      opacity: 0.25;
+      /* opacity: 0.25; */
       -webkit-transition: opacity 0.35s ease-in-out;
       -moz-transition: opacity 0.35s ease-in-out;
       -ms-transition: opacity 0.35s ease-in-out;

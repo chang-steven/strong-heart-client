@@ -8,7 +8,7 @@ export const USER_SIGNUP_TRIGGERED = 'USER_SIGNUP_TRIGGERED'
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
 export const USER_SIGNUP_FAILURE = 'USER_SIGNUP_FAILURE';
 
-export function userSignUp(data, cb) {
+export function userSignUp(data) {
     const promise = fetch(`${API_BASE_URL}/signup`,
     {
       method: 'POST',
@@ -148,8 +148,15 @@ export function addActivity(data) {
 export const DELETE_EXERCISE_TRIGGERED = 'DELETE_EXERCISE_TRIGGERED'
 export const DELETE_EXERCISE_SUCCESS = 'DELETE_EXERCISE_SUCCESS';
 export const DELETE_EXERCISE_FAILURE = 'DELETE_EXERCISE_FAILURE';
+const handleSuccessDeleteExercise = (cb, response, dispatch) => {
+    dispatch({
+        type: DELETE_EXERCISE_SUCCESS,
+        response,
+    });
+    cb();
+};
 
-export function deleteExercise(data) {
+export function deleteExercise(data, cb) {
     const token = loadAuthToken();
     const promise = fetch(`${API_BASE_URL}/delete`,
     {
@@ -162,7 +169,7 @@ export function deleteExercise(data) {
     });
     return {
         onRequest: DELETE_EXERCISE_TRIGGERED,
-        onSuccess: DELETE_EXERCISE_SUCCESS,
+        onSuccess: handleSuccessDeleteExercise.bind(null, cb),
         onFailure: DELETE_EXERCISE_FAILURE,
         promise,
     };

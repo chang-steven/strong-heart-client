@@ -52,13 +52,13 @@ export class Login extends React.Component {
               validate={required}
             />
             <br />
-            <button type="submit">Log-in</button>
-            <p>New user? <span
-              className='nav-links' onClick={()=>this.props.openModal('signup')}>Sign-up!</span></p>
+            <button className="hvr-bounce-in" type="submit">Log-in</button>
+            <p id="new-user">New user? <span
+              className='hvr-wobble-vertical form-tag' onClick={()=>this.props.openModal('signup')}>Sign-up!</span></p>
 
             {this.props.errorLogIn && <div className="error">Seems like there was a problem, try again.</div>}
 
-            <p>Wanna just look around? <button onClick={e => this.handleClick(e)}>Demo Login</button></p>
+            <p>Wanna just look around? <button className="hvr-bounce-in" onClick={e => this.handleClick(e)}>Demo Login</button></p>
           </fieldset>
         </form>
       </div>

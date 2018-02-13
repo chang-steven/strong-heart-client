@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactCarousel from '../../components/carousel';
-import dashboard from './dashboard.jpeg';
+import statistics from './statistics.jpeg';
+import exercise from './exercise-graph.jpeg';
 import './home.css';
 
 export default function Home(props) {
@@ -17,7 +18,10 @@ export default function Home(props) {
       <section id='analysis'>
         <h2 className="section-title">Analysis</h2>
         <div>
-          <img src={dashboard} alt='dashboard'/>
+          <img src={statistics} alt='statistics'/>
+        </div>
+        <div>
+          <img src={exercise} alt='exercise'/>
         </div>
       </section>
     </div>

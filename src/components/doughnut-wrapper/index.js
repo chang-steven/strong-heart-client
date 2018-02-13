@@ -26,7 +26,8 @@ const colorArray = [
   {
     label: 'Blue',
     colorCode: '#36a2eb'
-  },{
+  },
+  {
     label: 'Red',
     colorCode: '#FF6384'
   },

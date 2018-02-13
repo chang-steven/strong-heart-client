@@ -19,14 +19,21 @@
 
 
 
-.doughnut {
+/* .doughnut {
   max-width: 600px;
   width: 100%;
-}
+} */
+
+/* .doughnut-wrapper {
+  display: inline-block;
+  width: 700px;
+} */
 
 .doughnut, .statistics {
   display: inline-block;
+  width: 50%;
   margin: 0;
+  vertical-align: top;
 }
 
 .chartjs-render-monitor {

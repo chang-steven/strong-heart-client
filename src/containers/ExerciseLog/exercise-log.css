@@ -3,14 +3,17 @@
 }
 
 .exercise-card {
-  width: 155px;
+  width: 175px;
   font-size: 1.1em;
   padding: 20px;
   display: inline-block;
   border: 1px dashed lightgray;
   margin: 20px;
   position: relative;
-  background-color: lightgray;
+  background-color: #b7dfdf;
+  /* background: linear-gradient(to bottom, #0099ff 0%, #ffffff 100%); */
+  border: 3px solid #1a4e95;
+  /* border-radius: 10%; */
 }
 
 .exercise-card h3 {
@@ -26,3 +29,24 @@
   margin: 0;
   padding: 0;
 }
+
+.duration {
+  background-color: #1a4e95;
+  padding: .3em;
+  /* border-radius: 4px; */
+  color: #fff;
+}
+
+.activity-title {
+  padding: .6em;
+  border: 1px solid gray;
+  /* border-radius: 4px; */
+  background: white;
+  color: #425373;
+}
+
+/* .date {
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: white;
+} */

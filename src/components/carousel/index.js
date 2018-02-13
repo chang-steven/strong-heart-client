@@ -25,7 +25,7 @@ class ReactCarousel extends Component {
             <img src={Swimming} alt='swimming' />
             <div id="blurb" className='legend'>
               <div className="inner">
-                <p>Cardiovascular Fitness is directly linked to health and refers to the ability of your body to take in, transport and use oxygen while exercising.
+                <p>CARDIOVASCULAR FITNESS is directly linked to health and refers to the body's ability to take in, transport and use oxygen while exercising.
                 </p>
               </div>
             </div>
@@ -52,13 +52,12 @@ class ReactCarousel extends Component {
             <img src={Biking} alt='family biking' />
             <div id="blurb" className='legend'>
               <div className="inner">
-                <p>Keys to cardiovascular workouts.</p>
+                <p>KEYS to cardiovascular workouts:</p>
                   <ul>
                     <li>Exercise 3-5 times per week</li>
                     <li>Aim for 60-90% of your maximum heart rate</li>
                     <li>Sessions should last between 20-30 minutes</li>
                   </ul>
-                  {/* <p>Choose exercises that use large muscle groups in a rhythmical fashion, such as cycling, running, swimming or rowing.</p> */}
               </div>
 
               </div>
@@ -74,7 +73,6 @@ class ReactCarousel extends Component {
                       <li>Energy Levels</li>
                       <li>Resistance to illness and fatigue</li>
                     </ul>
-                    <p>Benefits decline if exercise is not regular and consistent.</p>
                 </div>
                 </div>
               </div>
