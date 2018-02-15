@@ -1,4 +1,5 @@
 import { UserReducer } from './user.reducer';
+import * as actions from '../actions';
 import { userSignUp, userLogIn, addExercise, editExercise, addActivity, deleteExercise, fetchUserInfo } from '../actions';
 
 
@@ -31,12 +32,21 @@ describe('UserReducer', () => {
 });
 
 describe('userSignUp', () => {
-      // it('Should add new lists', () => {
-      //     let state = initialState
-      //     state = UserReducer(state, addList(list1Title));
-      //     state = UserReducer(state, addList(list2Title));
-      //     expect(state).toEqual({
-      //         lists: [list1, list2]
-      //     });
-      // });
+      it('Should add new user', () => {
+          let state = {
+            loading: false,
+            errorLogIn: false,
+            errorSignUp: false,
+            errorMsg: null,
+            successMsg: null,
+        }
+          state = UserReducer(state, {type: actions.USER_SIGNUP_TRIGGERED});
+          expect(state).toEqual({
+            loading: true,
+            errorLogIn: false,
+            errorSignUp: false,
+            errorMsg: null,
+            successMsg: null,
+          });
+      });
   });

@@ -17,8 +17,9 @@ export class Loader extends React.Component {
         <div>
           {
             this.props.loading ?
-            <div className="loader">
-            </div>
+              <div className="loader">
+              </div>
+
           :
           <div>
             {this.props.children}

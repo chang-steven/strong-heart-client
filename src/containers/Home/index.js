@@ -26,8 +26,6 @@ export class Home extends React.Component {
   }
 
   handleTopAnimationScroll() {
-    console.log(document.documentElement.scrollTop);
-
     if (document.documentElement.scrollTop > 235) {
        this.setState({
          showTopAnimation: true,

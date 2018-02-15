@@ -22,7 +22,6 @@ export class NavBar extends React.Component {
   }
 
   handleScroll() {
-    console.log(document.documentElement.scrollTop);
     if (document.documentElement.scrollTop > 124) {
        this.setState({
          showNavLogo: true,

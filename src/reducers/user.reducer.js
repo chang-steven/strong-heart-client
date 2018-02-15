@@ -99,7 +99,6 @@ export const UserReducer = (state = initialState, action) => {
         currentUser: action.response.currentUser,
         exerciseLog: action.response.exerciseLog,
         exerciseStatistics: action.response.exerciseStatistics,
-
       }
     }
 
