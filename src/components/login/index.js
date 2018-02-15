@@ -10,6 +10,7 @@ import './login.css';
 export class Login extends React.Component {
   onSubmit(values) {
     this.props.userLogIn(values, this.props.handleClose);
+    this.props.reset();
   }
 
   demoUserLogin() {
@@ -34,7 +35,6 @@ export class Login extends React.Component {
         >
           <fieldset>
             <legend>Log-in</legend>
-            {/* <label for="email">Email</label> */}
             <Field
               name="email"
               type="email"
@@ -43,7 +43,6 @@ export class Login extends React.Component {
               validate={required}
             />
             <br />
-            {/* <label for="password">Password</label> */}
             <Field
               name="password"
               type="password"
@@ -52,13 +51,13 @@ export class Login extends React.Component {
               validate={required}
             />
             <br />
-            <button className="hvr-bounce-in" type="submit">Log-in</button>
+            <button className="hvr-bounce-in active-button" type="submit">Log-in</button>
             <p id="new-user">New user? <span
               className='hvr-wobble-vertical form-tag' onClick={()=>this.props.openModal('signup')}>Sign-up!</span></p>
 
-            {this.props.errorLogIn && <div className="error">Seems like there was a problem, try again.</div>}
+            {this.props.errorLogIn && <div className="error"><i className="fas fa-exclamation-triangle"></i> {this.props.errorMsg || 'Seems like there was a problem, try again.'}</div>}
 
-            <p>Wanna just look around? <button className="hvr-bounce-in" onClick={e => this.handleClick(e)}>Demo Login</button></p>
+            <p>Wanna just look around? <button className="hvr-bounce-in active-button" onClick={e => this.handleClick(e)}>Demo Login</button></p>
           </fieldset>
         </form>
       </div>
@@ -69,7 +68,8 @@ export class Login extends React.Component {
 const mapStateToProps = state => ({
   user: state.form.user,
   loggedIn: state.user.loggedIn,
-  errorLogIn: state.user.errorLogIn
+  errorLogIn: state.user.errorLogIn,
+  errorMsg: state.user.errorMsg,
 });
 
 Login = connect(mapStateToProps, { userLogIn })(Login);

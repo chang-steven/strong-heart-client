@@ -7,7 +7,6 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-// import  { Prompt } from 'react-router';
 
 import Modalbox from '../../components/modalbox';
 import EditExercise from '../EditExercise';
@@ -89,12 +88,11 @@ export class ExerciseLog extends React.Component {
               <MenuItem
                 primaryText="delete"
                 onClick={()=>this.openDeleteModal(exercise._id)}
-                // onClick={()=>this.deleteExercise(exercise._id)}
               />
             </IconMenu>
           </div>
-          <p className="date"><Moment format="MM-DD-YY">{exercise.date}</Moment></p>
           <h3 className="activity-title">{capitalActivity}</h3>
+          <p className="date"><Moment format="MM-DD-YY">{exercise.date}</Moment></p>
         </div>
       )
     });
@@ -102,7 +100,7 @@ export class ExerciseLog extends React.Component {
     return (
       <div>
         <MuiThemeProvider>
-          <h2>Exercise Log</h2>
+          <h2 className="section-title">Exercise Log</h2>
           <section className="exercise-log">
             {exerciseLog}
           </section>
@@ -124,10 +122,10 @@ export class ExerciseLog extends React.Component {
                 >
                   <p>Are you sure you want to delete?</p>
                   <button
-                    className="button"
+                    className="active-button hvr-bounce-in"
                     onClick={()=>this.handleClose()}>Cancel</button>
                   <button
-                    className="button"
+                    className="active-button hvr-bounce-in"
                     onClick={()=>this.deleteExercise()}>Confirm</button>
                 </Modalbox>
               }

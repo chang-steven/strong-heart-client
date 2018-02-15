@@ -1,14 +1,18 @@
 import React from 'react';
-import './header.css';
 import {Link} from 'react-router-dom'
-import logo from './logo.png';
+
+import './header.css';
+import logo from './images/logo.png';
 
 function Header(props) {
   return (
     <header className="App-header">
-      <div className='header-logo'><Link to="/"><img src={logo} alt='logo' /></Link>
-    </div>
-      <h1 className="App-title"><Link to="/">HEART<strong>STRONG</strong></Link></h1>
+      <div className='header-logo'>
+        <Link to="/"><img src={logo} alt='logo' /></Link>
+      </div>
+      <h1 className="App-title">
+        <Link to="/">HEART<strong>STRONG</strong></Link>
+      </h1>
     </header>
   );
 }

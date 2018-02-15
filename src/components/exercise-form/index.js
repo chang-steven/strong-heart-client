@@ -59,8 +59,8 @@ export class ExerciseForm extends React.Component {
             placeholder="Swimming, etc."
             component="input"
           />
-          <button className="hvr-bounce-in" onClick={(e) => this.handleClick(e)}>Add New Activity</button>
-          {this.props.errorAddActivity && <div className="error">Please enter a valid activity</div>}
+          <button className={this.props.activity === undefined ? "in-active-button" : "active-button hvr-bounce-in"} disabled={this.props.activity === undefined} onClick={(e) => this.handleClick(e)}>Add New Activity</button>
+          {this.props.errorAddActivity && <div className="error"><i className="fas fa-exclamation-triangle"></i>{this.props.errorMsg || 'Please enter a valid activity'}</div>}
 
           <Field
             name="duration"
@@ -71,7 +71,7 @@ export class ExerciseForm extends React.Component {
             validate={required}
           />
           <br />
-          <button className="hvr-bounce-in" type="submit" name="submit">{this.props.formTitle}</button>
+          <button className="hvr-bounce-in active-button" type="submit" name="submit">{this.props.formTitle}</button>
         </fieldset>
       </form>
     );
@@ -82,7 +82,8 @@ const selector = formValueSelector('exercise-form');
 
 const mapStateToProps = state => ({
   activity: selector(state, 'newActivity'),
-  errorAddActivity: state.user.errorAddActivity
+  errorAddActivity: state.user.errorAddActivity,
+  errorMsg: state.user.errorMsg,
 });
 
 export default connect(mapStateToProps, { addActivity })(reduxForm({ form: 'exercise-form' })(ExerciseForm));

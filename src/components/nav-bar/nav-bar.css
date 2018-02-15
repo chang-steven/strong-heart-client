@@ -34,7 +34,6 @@
 }
 
 #logo {
-  display: inline-block;
   vertical-align: middle;
 }
 
@@ -44,11 +43,12 @@
 
 #hamburger {
   position: absolute;
-  top: 20px;
-  right: 60px;
+  top: 25px;
+  right: 40px;
   display: none;
   cursor: pointer;
   z-index: 12;
+  color: #dfdfdf
 }
 
 .small-header {
@@ -59,10 +59,35 @@
   display: inline-block;
   vertical-align: middle;
   margin: 10px 4px;
+  font-weight: 400;
 }
 
 .small-header img {
   width: 50px;
+}
+
+.small-header-title strong {
+  font-weight: 700;
+}
+
+.no-show {
+  display: none;
+}
+
+.show {
+  display: inline-block;
+  z-index: 19;
+  position: relative;
+  bottom: -.5em;
+  -webkit-animation: slide-in-nav 1s forwards;
+  animation: slide-in-nav 1s forwards;
+}
+
+@-webkit-keyframes slide-in-nav {
+  100% { bottom: 0 }
+}
+@keyframes slide-in-nav {
+  100% { bottom: 0 }
 }
 
 @media (max-width: 680px) {
@@ -86,7 +111,7 @@
   }
 
   .small-header a {
-    color: #58cc1c;
+    color: #dfdfdf;
   }
 
   .nav-links a, .nav-links {
@@ -94,36 +119,20 @@
   }
 
   .App-nav {
-    background-image: url('../header/metal.jpg');
+    background-image: url('../header/images/metal.jpg');
   }
 
   .isClosed {
     display: none;
-    transition-timing-function: ease-in;
-
- /* Quick on the way out */
- transition: 0.2s;
-
- /* Hide thing by pushing it outside by default */
- /* transform: translateY(130%); */
   }
 
   .isOpen {
     opacity: 1;
     z-index: 11;
-    transition-timing-function: ease-out;
-
-    /* A litttttle slower on the way in */
-    transition: 0.25s;
-
-    /* Move into place */
-    /* transform: translateY(0); */
   }
 
   .isOpen li {
     display: block;
-
   }
-
 
 }

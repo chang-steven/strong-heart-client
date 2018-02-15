@@ -1,14 +1,12 @@
-.dashboard img {
-  /* width: 500px; */
-}
-
 .no-data {
+  padding-top: 50px;
   text-align: center;
+  height: 500px;
 }
 
 .statistics {
   border: 1px solid gray;
-  max-width: 400px;
+  max-width: 300px;
   padding: 12px;
 }
 
@@ -17,21 +15,16 @@
   font-weight: bold;
 }
 
+.doughnut {
+  width: 60%;
+}
 
-
-/* .doughnut {
-  max-width: 600px;
-  width: 100%;
-} */
-
-/* .doughnut-wrapper {
-  display: inline-block;
-  width: 700px;
-} */
+.statistics {
+  width: 40%
+}
 
 .doughnut, .statistics {
   display: inline-block;
-  width: 50%;
   margin: 0;
   vertical-align: top;
 }
@@ -40,6 +33,23 @@
   display: inline-block;
 }
 
+.line-wrapper {
+  margin-top: 20px;
+}
+
 .line {
   margin: 40px auto;
+}
+
+@media (max-width: 680px) {
+  .doughnut, .statistics {
+      display: block;
+      width: 90%;
+      margin: 30px auto;
+  }
+
+  .section-title {
+    text-align: left;
+    padding-left: 5%;
+  }
 }

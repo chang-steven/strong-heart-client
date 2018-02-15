@@ -9,7 +9,8 @@ import './signup.css';
 export class SignUp extends React.Component {
 
   onSubmit(values) {
-    this.props.userSignUp(values).then(() => this.props.userLogIn(values, this.props.handleClose));
+    this.props.userSignUp(values);
+    this.props.reset()
   }
 
   render() {
@@ -23,7 +24,6 @@ export class SignUp extends React.Component {
             >
             <fieldset>
               <legend>Sign-up</legend>
-              {/* <label htmlFor="email">Email</label> */}
               <Field
                 name="email"
                 type="email"
@@ -31,7 +31,6 @@ export class SignUp extends React.Component {
                 component={Input}
                 validate={[required]}
               />
-              {/* <label htmlFor="password">Password</label> */}
               <Field
                 name="password"
                 type="password"
@@ -40,7 +39,6 @@ export class SignUp extends React.Component {
                 validate={[required, minLength6, maxLength15, isTrimmed]}
 
               />
-              {/* <label htmlFor="re-enter-password">Re-Enter Password</label> */}
               <Field
                 name="confirm-password"
                 type="password"
@@ -50,14 +48,18 @@ export class SignUp extends React.Component {
 
               />
               <div className="form-bottom">
-                <button className="hvr-bounce-in" type="submit" disabled={submitting}>
+                <button className="active-button hvr-bounce-in" type="submit" disabled={submitting}>
                   Submit
                 </button>
-                <button className="hvr-bounce-in" type="button" disabled={pristine || submitting} onClick={reset}>
+                <button className={pristine ? "in-active-button" : "active-button hvr-bounce-in"} type="button" disabled={pristine || submitting} onClick={reset}>
                   Reset
                 </button>
 
-                {this.props.errorSignUp && <div className="error">Seems like there was a problem, try again.</div>}
+                {this.props.errorSignUp && <div className="error"><i className="fas fa-exclamation-triangle"></i>  {this.props.errorMsg || 'Sorry, seems like there was a problem'}</div>}
+
+                {this.props.successMsg && pristine && <div className="success">
+                  {this.props.successMsg}
+                </div>}
 
                 <p>Already signed up?  <span className='hvr-wobble-vertical form-tag' onClick={()=> this.props.openModal('login')}>Log-in!</span></p>
               </div>
@@ -69,7 +71,9 @@ export class SignUp extends React.Component {
   }
 
   const mapStateToProps = state => ({
-    errorSignUp: state.user.errorSignUp
+    errorSignUp: state.user.errorSignUp,
+    errorMsg: state.user.errorMsg,
+    successMsg: state.user.successMsg,
   });
 
   SignUp = connect(mapStateToProps, { userSignUp, userLogIn })(SignUp);

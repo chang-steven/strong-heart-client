@@ -4,7 +4,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../../components/header';
-// import ResponsiveNav from '../../components/responsive-nav';
 import NavBar from '../../components/nav-bar';
 import Loader from '../../components/loader';
 import Home from '../Home';
@@ -41,7 +40,6 @@ export class App extends React.Component {
   render() {
     return (
         <div className="App">
-          {/* <ResponsiveNav /> */}
           <NavBar openModal={this.open.bind(this)} />
           <Header />
           <main role="main">

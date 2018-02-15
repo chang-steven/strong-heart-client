@@ -4,6 +4,8 @@ const initialState = {
   errorSignUp: false,
   errorLogIn: false,
   errorAddActivity: false,
+  errorMsg: null,
+  successMsg: null,
   loading: false,
   loggedIn: false,
   activities: [],
@@ -19,7 +21,10 @@ export const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        errorLogIn: false,
         errorSignUp: false,
+        errorMsg: null,
+        successMsg: null,
       }
     }
 
@@ -27,6 +32,7 @@ export const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        successMsg: action.response.message
       }
     }
 
@@ -35,6 +41,7 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         errorSignUp: true,
+        errorMsg: action.error.message,
       }
     }
 
@@ -43,6 +50,8 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         errorLogIn: false,
+        errorSignUp: false,
+        errorMsg: null,
       }
     }
 
@@ -63,6 +72,7 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         errorLogIn: true,
+        errorMsg: action.error.message,
       }
     }
 
@@ -128,6 +138,7 @@ export const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         errorAddActivity: false,
+        errorMsg: null,
       }
     }
 
@@ -142,6 +153,7 @@ export const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         errorAddActivity: true,
+        errorMsg: action.error.message,
       }
     }
 

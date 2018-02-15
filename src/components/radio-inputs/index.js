@@ -9,7 +9,7 @@ class RadioInputs extends React.Component {
         return (
             <div className="radio-inputs">
                     {options.map(o => <label key={o.value}><input type="radio" {...input} value={o.value} checked={o.value === input.value} /> {o.title}</label>)}
-                    {hasError && <div className="error">{meta.error}</div>}
+                    {hasError && <div className="error"><i className="fas fa-exclamation-triangle"></i> {meta.error}</div>}
             </div>
         );
     }

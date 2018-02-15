@@ -6,7 +6,7 @@ import { NavBar } from './index';
 
 describe('<NavBar />', () => {
   const testLinks = [
-    {title: 'about', link: '/about'},
+    {title: 'why', link: '/why'},
     {title: 'how it works', link: '/how-it-works'},
     {title: 'analysis', link: '/analysis'}
   ];

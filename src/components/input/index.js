@@ -8,7 +8,7 @@ const Input = ({ input, placeholder, label, type, meta: { touched, error }
       <input {...input} placeholder={placeholder} type={type} />
       </div>
       {touched &&
-        ((error && <div className="error"><i class="fas fa-exclamation-triangle"></i> {error}</div>))}
+        ((error && <div className="error"><i className="fas fa-exclamation-triangle"></i> {error}</div>))}
     </div>
   );
 

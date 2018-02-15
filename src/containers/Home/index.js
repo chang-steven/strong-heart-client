@@ -1,29 +1,104 @@
 import React from 'react';
 import ReactCarousel from '../../components/carousel';
-import statistics from './statistics.jpeg';
-import exercise from './exercise-graph.jpeg';
+import exercise from './images/exercise.jpeg';
+import doughnut from './images/doughnut.jpeg';
+import line from './images/line.jpeg';
+
 import './home.css';
 
-export default function Home(props) {
+export class Home extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="home" id="about">
-      <ReactCarousel />
-      <section id='how-it-works'>
-        <h2 className="section-title">How It Works</h2>
-        <div>
-          <img src='http://via.placeholder.com/400x200' alt='placeholder'/>
-        </div>
-      </section>
-      <section id='analysis'>
-        <h2 className="section-title">Analysis</h2>
-        <div>
-          <img src={statistics} alt='statistics'/>
-        </div>
-        <div>
-          <img src={exercise} alt='exercise'/>
-        </div>
-      </section>
-    </div>
-  );
+    this.state = {
+      showTopAnimation: false,
+      showMiddleAnimation: false,
+      showBottomAnimation: false
+    };
+  }
+
+  componentDidMount() {
+    window.onscroll = () => {
+      this.handleTopAnimationScroll();
+      this.handleMiddleAnimationScroll();
+      this.handleBottomAnimationScroll();
+    }
+  }
+
+  handleTopAnimationScroll() {
+    console.log(document.documentElement.scrollTop);
+
+    if (document.documentElement.scrollTop > 235) {
+       this.setState({
+         showTopAnimation: true,
+       })
+     }
+
+     else {
+       this.setState({
+         showTopAnimation: false,
+       })
+     }
+   }
+
+   handleMiddleAnimationScroll() {
+     if (document.documentElement.scrollTop > 805) {
+        this.setState({
+          showMiddleAnimation: true,
+        })
+      }
+
+      else {
+        this.setState({
+          showMiddleAnimation: false,
+        })
+      }
+    }
+
+   handleBottomAnimationScroll() {
+     if (document.documentElement.scrollTop > 1000) {
+        this.setState({
+          showBottomAnimation: true,
+        })
+      }
+
+      else {
+        this.setState({
+          showBottomAnimation: false,
+        })
+      }
+    }
+
+  render() {
+    return (
+      <div className="home" id="why">
+        <ReactCarousel />
+        <section id='how-it-works' className={this.state.showTopAnimation ? 'showTopAnimation' : 'noShowTopAnimation'}>
+          <div className="home-blurb">
+            <h2 className="section-title">Reap the Benefits</h2>
+            <p className="home-paragraph">We all know that regular exercise is difficult, and without structure and determination it's tough to stay on schedule.  With <span>HEART<strong>STRONG</strong></span> log your exercise and analyze your activity patterns.</p>
+          </div>
+          <div className="image">
+            <img src={exercise} alt='exercise'/>
+          </div>
+        </section>
+        <section id='analysis' className={this.state.showMiddleAnimation ? 'showMiddleAnimation' : 'noShowMiddleAnimation'}>
+          <div className="image">
+            <img src={doughnut} alt='doughnut'/>
+          </div>
+          <div className="home-blurb">
+            <h2 className="section-title">Analyze Your Exercise</h2>
+            <p className="home-paragraph">Interactive charts help visualize trends in exercise and show you the types of activities you do the most. </p>
+          </div>
+          </section>
+          <section className={this.state.showBottomAnimation ? 'showBottomAnimation' : 'noShowBottomAnimation'}>
+          <div id="bottom-line-chart">
+            <img src={line} alt='line'/>
+          </div>
+        </section>
+      </div>
+    );
+  }
 }
+
+export default Home;

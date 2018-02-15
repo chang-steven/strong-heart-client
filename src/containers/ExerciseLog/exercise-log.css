@@ -3,17 +3,17 @@
 }
 
 .exercise-card {
+  background-image: url('./workout-app.png');
+  background-position: center;
+  background-size: 100.5%;
+  background-repeat: no-repeat;
   width: 175px;
   font-size: 1.1em;
   padding: 20px;
   display: inline-block;
-  border: 1px dashed lightgray;
   margin: 20px;
   position: relative;
-  background-color: #b7dfdf;
-  /* background: linear-gradient(to bottom, #0099ff 0%, #ffffff 100%); */
-  border: 3px solid #1a4e95;
-  /* border-radius: 10%; */
+  border: 3px solid #8d8c8c;
 }
 
 .exercise-card h3 {
@@ -31,22 +31,30 @@
 }
 
 .duration {
-  background-color: #1a4e95;
+  background-color: #8d8c8c;
   padding: .3em;
-  /* border-radius: 4px; */
   color: #fff;
 }
 
 .activity-title {
+  position: relative;
+  top: 70px;
+  margin-top: 1em;
+  margin-bottom: 1em;
   padding: .6em;
   border: 1px solid gray;
-  /* border-radius: 4px; */
   background: white;
-  color: #425373;
+  color: #464545;
 }
 
-/* .date {
-  border: 1px solid black;
-  border-radius: 50%;
-  background-color: white;
-} */
+.date {
+  margin-top: 70px;
+  margin-bottom: 0;
+  color: #464545;
+}
+
+@media (max-width: 680px) {
+  .exercise-card {
+    margin: 10px;
+  }
+}

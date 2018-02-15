@@ -189,7 +189,6 @@
       padding: 10px;
       font-size: 12px;
       text-align: center;
-      /* opacity: 0.25; */
       -webkit-transition: opacity 0.35s ease-in-out;
       -moz-transition: opacity 0.35s ease-in-out;
       -ms-transition: opacity 0.35s ease-in-out;
@@ -203,7 +202,8 @@
     width: 100%; }
     @media (min-width: 960px) {
       .carousel .control-dots {
-        bottom: 0; } }
+        bottom: 0; }
+        }
     .carousel .control-dots .dot {
       -webkit-transition: opacity 0.25s ease-in;
       -moz-transition: opacity 0.25s ease-in;

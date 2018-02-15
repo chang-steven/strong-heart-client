@@ -21,7 +21,7 @@ export class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        <h2>Dashboard</h2>
+        <h2 className="section-title">Dashboard</h2>
           <div className="doughnut charts">
             <DoughnutWrapper />
           </div>

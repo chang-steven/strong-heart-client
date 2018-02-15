@@ -40,7 +40,7 @@ const handleSuccessUserAuthentication = (cb, response, dispatch) => {
 };
 
 export function userLogIn(data, cb) {
-    const promise = fetch(`${API_BASE_URL}/login`,
+    const promise = fetch(`${API_BASE_URL}/user`,
     {
       method: 'POST',
       body: JSON.stringify(data),
@@ -73,7 +73,7 @@ export const ADD_EXERCISE_FAILURE = 'ADD_EXERCISE_FAILURE';
 
 export function addExercise(data) {
     const token = loadAuthToken();
-    const promise = fetch(`${API_BASE_URL}/add-exercise`,
+    const promise = fetch(`${API_BASE_URL}/exercise`,
     {
       method: 'POST',
       body: JSON.stringify(data),
@@ -97,7 +97,7 @@ export const EDIT_EXERCISE_FAILURE = 'EDIT_EXERCISE_FAILURE';
 
 export function editExercise(data) {
     const token = loadAuthToken();
-    const promise = fetch(`${API_BASE_URL}/edit-exercise`,
+    const promise = fetch(`${API_BASE_URL}/exercise`,
     {
       method: 'PUT',
       body: JSON.stringify(data),
@@ -158,7 +158,7 @@ const handleSuccessDeleteExercise = (cb, response, dispatch) => {
 
 export function deleteExercise(data, cb) {
     const token = loadAuthToken();
-    const promise = fetch(`${API_BASE_URL}/delete`,
+    const promise = fetch(`${API_BASE_URL}/exercise`,
     {
       method: 'DELETE',
       body: JSON.stringify(data),
@@ -182,7 +182,7 @@ export const FETCH_USERINFO_FAILURE = 'FETCH_USERINFO_FAILURE';
 
 export function fetchUserInfo() {
     const token = loadAuthToken();
-    const promise = fetch(`${API_BASE_URL}/user-info`,
+    const promise = fetch(`${API_BASE_URL}/user`,
       {
         method: 'GET',
         headers: new Headers({

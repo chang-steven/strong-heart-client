@@ -2,7 +2,7 @@
   margin-top: 58px;
   height: 150px;
   padding: 20px;
-  background-image: url('./metal.jpg');
+  background-image: url('./images/metal.jpg');
   text-align: center;
 }
 
@@ -12,7 +12,10 @@
 }
 
 .App-title a {
-  color: #58cc1c;
+  color: #dfdfdf;
+  /* color: #58cc1c; */
+  /* color: #A4FD29; */
+  /* color: #0B4A4A; */
   padding: 10px;
 
 }
@@ -33,6 +36,7 @@
 .header-logo {
   width: 100px;
   display: inline-block;
+  z-index: 15;
 }
 
 .header-logo img {
@@ -41,14 +45,13 @@
 
 }
 
-
 @media (max-width: 680px) {
   .App-header {
     display: none;
   }
 
   main {
-    margin-top: 74px;
+    padding-top: 74px;
   }
 
 }

@@ -6,11 +6,11 @@ import { App } from './index';
 
 describe('<App />', () => {
   const testLinks = [
-    {title: 'about', link: '/about'},
+    {title: 'why', link: '/why'},
     {title: 'how it works', link: '/how-it-works'},
     {title: 'analysis', link: '/analysis'}
   ];
-  
+
   it('Should render without crashing', () => {
     shallow(<App links={testLinks}/>);
   });
