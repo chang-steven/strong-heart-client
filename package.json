@@ -6,7 +6,6 @@
     "chart.js": "^2.7.1",
     "chartjs-plugin-deferred": "^1.0.0",
     "history": "^4.7.2",
-    "jquery": "^3.3.1",
     "material-ui": "^0.20.0",
     "moment": "^2.20.1",
     "normalize.css": "^8.0.0",
@@ -14,7 +13,6 @@
     "react": "^16.2.0",
     "react-chartjs-2": "^2.7.0",
     "react-dom": "^16.2.0",
-    "react-fontawesome": "^1.6.1",
     "react-moment": "^0.7.0",
     "react-overlays": "^0.8.3",
     "react-redux": "^5.0.6",
@@ -23,12 +21,10 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.0.17",
     "react-scrollchor": "^4.2.1",
-    "react-slick": "^0.17.1",
     "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
     "redux-form": "^7.2.0",
-    "redux-thunk": "^2.2.0",
-    "slick-carousel": "^1.8.1"
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "REACT_APP_API_BASE_URL=http://localhost:8080/api react-scripts start",

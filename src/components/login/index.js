@@ -15,8 +15,8 @@ export class Login extends React.Component {
 
   demoUserLogin() {
     const demoUser = {
-      email: 'test4@test.com',
-      password: 'test',
+      email: 'user@demo.com',
+      password: 'abc123',
     };
     this.props.userLogIn(demoUser, this.props.handleClose);
   }
