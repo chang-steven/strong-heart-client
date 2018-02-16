@@ -12,7 +12,6 @@ const initialState = {
   currentUser: {},
   exerciseLog: [],
   exerciseStatistics: {},
-  badges: [],
 };
 
 export const UserReducer = (state = initialState, action) => {

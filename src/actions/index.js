@@ -181,12 +181,12 @@ export const FETCH_USERINFO_SUCCESS = 'FETCH_USERINFO_SUCCESS';
 export const FETCH_USERINFO_FAILURE = 'FETCH_USERINFO_FAILURE';
 
 export function fetchUserInfo() {
-    const token = loadAuthToken();
+    // const token = loadAuthToken();
     const promise = fetch(`${API_BASE_URL}/user`,
       {
         method: 'GET',
         headers: new Headers({
-          Authorization: `Bearer ${token}`
+          // Authorization: `Bearer ${token}`
         })
       })
 
