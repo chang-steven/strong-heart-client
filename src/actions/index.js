@@ -1,9 +1,8 @@
-import { API_BASE_URL } from '../config';
 import { push } from 'react-router-redux';
 import { loadAuthToken, saveAuthToken, clearAuthToken } from '../helpers/local-storage';
+import { API_BASE_URL } from '../config';
 
-
-//User Sign Up
+//User Sign Up action creator
 export const USER_SIGNUP_TRIGGERED = 'USER_SIGNUP_TRIGGERED'
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
 export const USER_SIGNUP_FAILURE = 'USER_SIGNUP_FAILURE';
@@ -25,7 +24,7 @@ export function userSignUp(data) {
     };
 }
 
-//User Log In
+//User Log In action creator
 export const USER_LOGIN_TRIGGERED = 'USER_LOGIN_TRIGGERED'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
@@ -52,11 +51,11 @@ export function userLogIn(data, cb) {
         onRequest: USER_LOGIN_TRIGGERED,
         onSuccess: handleSuccessUserAuthentication.bind(null, cb),
         onFailure: USER_LOGIN_FAILURE,
-        promise,
+        promise: promise,
     };
 }
 
-//User Log Out
+//User Log Out action creator
 export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
 export const userLogOut = () => (dispatch) => {
   clearAuthToken();
@@ -66,7 +65,7 @@ export const userLogOut = () => (dispatch) => {
   });
 }
 
-//Add Exercise
+//Add Exercise action creator
 export const ADD_EXERCISE_TRIGGERED = 'ADD_EXERCISE_TRIGGERED'
 export const ADD_EXERCISE_SUCCESS = 'ADD_EXERCISE_SUCCESS';
 export const ADD_EXERCISE_FAILURE = 'ADD_EXERCISE_FAILURE';
@@ -90,7 +89,7 @@ export function addExercise(data) {
     };
 }
 
-//Edit Exercise
+//Edit Exercise action creator
 export const EDIT_EXERCISE_TRIGGERED = 'EDIT_EXERCISE_TRIGGERED'
 export const EDIT_EXERCISE_SUCCESS = 'EDIT_EXERCISE_SUCCESS';
 export const EDIT_EXERCISE_FAILURE = 'EDIT_EXERCISE_FAILURE';
@@ -114,16 +113,10 @@ export function editExercise(data) {
     };
 }
 
-//Add Activity
+//Add Activity action creator
 export const ADD_ACTIVITY_TRIGGERED = 'ADD_ACTIVITY_TRIGGERED'
 export const ADD_ACTIVITY_SUCCESS = 'ADD_ACTIVITY_SUCCESS';
 export const ADD_ACTIVITY_FAILURE = 'ADD_ACTIVITY_FAILURE';
-const handleAddActivitySuccess = (response, dispatch) => {
-  dispatch({
-      type: ADD_ACTIVITY_SUCCESS,
-      response
-  });
-}
 
 export function addActivity(data) {
     const token = loadAuthToken();
@@ -138,13 +131,13 @@ export function addActivity(data) {
     });
     return {
         onRequest: ADD_ACTIVITY_TRIGGERED,
-        onSuccess: handleAddActivitySuccess,
+        onSuccess: ADD_ACTIVITY_SUCCESS,
         onFailure: ADD_ACTIVITY_FAILURE,
         promise,
     };
 }
 
-//Delete Activity
+//Delete Activity action creator
 export const DELETE_EXERCISE_TRIGGERED = 'DELETE_EXERCISE_TRIGGERED'
 export const DELETE_EXERCISE_SUCCESS = 'DELETE_EXERCISE_SUCCESS';
 export const DELETE_EXERCISE_FAILURE = 'DELETE_EXERCISE_FAILURE';
@@ -175,18 +168,18 @@ export function deleteExercise(data, cb) {
     };
 }
 
-//Fetch Exercise Log
+//Fetch Exercise Log action creator
 export const FETCH_USERINFO_TRIGGERED = 'FETCH_USERINFO_TRIGGERED'
 export const FETCH_USERINFO_SUCCESS = 'FETCH_USERINFO_SUCCESS';
 export const FETCH_USERINFO_FAILURE = 'FETCH_USERINFO_FAILURE';
 
 export function fetchUserInfo() {
-    // const token = loadAuthToken();
+    const token = loadAuthToken();
     const promise = fetch(`${API_BASE_URL}/user`,
       {
         method: 'GET',
         headers: new Headers({
-          // Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`
         })
       })
 

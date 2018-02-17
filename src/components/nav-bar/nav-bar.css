@@ -90,6 +90,7 @@
   100% { bottom: 0 }
 }
 
+/* Media Queries*/
 @media (max-width: 680px) {
   #hamburger {
     display: block;

@@ -41,6 +41,7 @@
   margin: 40px auto;
 }
 
+/* Media Queries */
 @media (max-width: 680px) {
   .doughnut, .statistics {
       display: block;

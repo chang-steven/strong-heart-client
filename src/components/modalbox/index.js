@@ -3,7 +3,6 @@ import { Modal } from 'react-overlays';
 import Transition, { ENTERED, ENTERING } from 'react-transition-group/Transition';
 import './modalbox.css';
 
-
 const FADE_DURATION = 200;
 
 const fadeStyles = {
@@ -21,7 +20,6 @@ const Fade = ({ children, ...props }) => {
     </Transition>
   );
 }
-
 
 class Modalbox extends React.Component {
     render() {

@@ -17,4 +17,4 @@ const store = createStore(
     applyMiddleware( ...middlewares )
   ));
 
-export default store;
+  export default store;

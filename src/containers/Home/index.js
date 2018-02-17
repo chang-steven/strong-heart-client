@@ -3,7 +3,6 @@ import ReactCarousel from '../../components/carousel';
 import exercise from './images/exercise.jpeg';
 import doughnut from './images/doughnut.jpeg';
 import line from './images/line.jpeg';
-
 import './home.css';
 
 export class Home extends React.Component {
@@ -27,45 +26,45 @@ export class Home extends React.Component {
 
   handleTopAnimationScroll() {
     if (document.documentElement.scrollTop > 235) {
-       this.setState({
-         showTopAnimation: true,
-       })
-     }
-
-     else {
-       this.setState({
-         showTopAnimation: false,
-       })
-     }
-   }
-
-   handleMiddleAnimationScroll() {
-     if (document.documentElement.scrollTop > 805) {
-        this.setState({
-          showMiddleAnimation: true,
-        })
-      }
-
-      else {
-        this.setState({
-          showMiddleAnimation: false,
-        })
-      }
+      this.setState({
+        showTopAnimation: true,
+      })
     }
 
-   handleBottomAnimationScroll() {
-     if (document.documentElement.scrollTop > 1000) {
-        this.setState({
-          showBottomAnimation: true,
-        })
-      }
-
-      else {
-        this.setState({
-          showBottomAnimation: false,
-        })
-      }
+    else {
+      this.setState({
+        showTopAnimation: false,
+      })
     }
+  }
+
+  handleMiddleAnimationScroll() {
+    if (document.documentElement.scrollTop > 805) {
+      this.setState({
+        showMiddleAnimation: true,
+      })
+    }
+
+    else {
+      this.setState({
+        showMiddleAnimation: false,
+      })
+    }
+  }
+
+  handleBottomAnimationScroll() {
+    if (document.documentElement.scrollTop > 1000) {
+      this.setState({
+        showBottomAnimation: true,
+      })
+    }
+
+    else {
+      this.setState({
+        showBottomAnimation: false,
+      })
+    }
+  }
 
   render() {
     return (
@@ -88,8 +87,8 @@ export class Home extends React.Component {
             <h2 className="section-title">Analyze Your Exercise</h2>
             <p className="home-paragraph">Interactive charts help visualize trends in exercise and show you the types of activities you do the most. </p>
           </div>
-          </section>
-          <section className={this.state.showBottomAnimation ? 'showBottomAnimation' : 'noShowBottomAnimation'}>
+        </section>
+        <section className={this.state.showBottomAnimation ? 'showBottomAnimation' : 'noShowBottomAnimation'}>
           <div id="bottom-line-chart">
             <img src={line} alt='line'/>
           </div>

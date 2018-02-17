@@ -44,7 +44,6 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = state => ({
   exerciseStatistics: state.user.exerciseStatistics
-
 });
 
 export default connect(mapStateToProps, { fetchUserInfo })(Dashboard);

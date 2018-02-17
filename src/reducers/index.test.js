@@ -367,7 +367,7 @@ describe('fetchUserInfo', () => {
     let state = {
       loading: true,
     }
-
+    
     state = UserReducer(state, {type: actions.FETCH_USERINFO_FAILURE, error: {message: 'Error'}});
     expect(state).toEqual({
       loading: false,

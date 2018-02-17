@@ -6,10 +6,10 @@ const Input = ({ input, placeholder, label, type, meta: { touched, error }
     <label className="form-label">{label}</label>
     <div className='form-input'>
       <input {...input} placeholder={placeholder} type={type} />
-      </div>
-      {touched &&
-        ((error && <div className="error"><i className="fas fa-exclamation-triangle"></i> {error}</div>))}
+    </div>
+    {touched &&
+      ((error && <div className="error"><i className="fas fa-exclamation-triangle"></i> {error}</div>))}
     </div>
   );
 
-export default Input;
+  export default Input;

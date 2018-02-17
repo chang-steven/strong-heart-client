@@ -10,28 +10,27 @@ export class Loader extends React.Component {
     if (token) {
       this.props.fetchUserInfo();
     }
-}
+  }
 
   render() {
     return (
-        <div>
-          {
-            this.props.loading ?
-              <div className="loader">
-              </div>
+      <div>
+        {
+          this.props.loading ?
 
+          <div className="loader"></div>
           :
           <div>
             {this.props.children}
           </div>
-          }
-        </div>
+        }
+      </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-    loading: state.user.loading,
+  loading: state.user.loading,
 })
 
 export default connect(mapStateToProps, { fetchUserInfo })(Loader);
