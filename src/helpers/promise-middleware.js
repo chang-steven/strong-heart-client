@@ -31,6 +31,9 @@ export default function promiseMiddleware( { dispatch, getState } ) {
     .then( checkStatus )
     .then( parseJSON )
     .then(( response ) => {
+      if (response.isTesting) {
+        return response;
+      }
       try {
         if ( typeof onSuccess === 'function' ) {
           onSuccess( response, dispatch, getState, ...rest );

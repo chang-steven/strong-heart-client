@@ -72,6 +72,11 @@ export class Login extends React.Component {
       errorMsg: state.user.errorMsg,
     });
 
+    // const mapDispatchToProps = dispatch => ({
+    //   userLogIn: dispatch(userLogIn)
+    // });
+
+
     Login = connect(mapStateToProps, { userLogIn })(Login);
 
     export default reduxForm({ form: 'log-in' })(Login)

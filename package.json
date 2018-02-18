@@ -1,7 +1,9 @@
 {
   "name": "strong-heart-client",
   "version": "0.1.0",
+  "description": "HEARTSTRONG is a personal exercise tracker, helping you log your activity ensuring you reap the benefits of cardiovascular fitness.  Regular exercise is difficult, but HEARTSTRONG provides visual analysis and statistics about your exercise, helping you keep on track.",
   "private": true,
+  "author": "Steven Chang",
   "dependencies": {
     "chart.js": "^2.7.1",
     "chartjs-plugin-deferred": "^1.0.0",

@@ -109,6 +109,7 @@
     display: inline-block;
     vertical-align: middle;
     z-index: 12;
+    margin-left: 15px;
   }
 
   .small-header a {

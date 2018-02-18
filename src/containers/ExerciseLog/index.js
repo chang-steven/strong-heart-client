@@ -40,7 +40,6 @@ export class ExerciseLog extends React.Component {
   }
 
   openDeleteModal(exerciseId) {
-    console.log('opening delete modal', exerciseId);
     this.setState({
       isDeleteVisible: true,
       currentExerciseId: exerciseId
