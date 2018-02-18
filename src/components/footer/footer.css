@@ -7,8 +7,10 @@
 }
 
 .App-footer p {
+  color: #2b2b2b;
   text-align: center;
   vertical-align: middle;
+  font-weight: 900;
 }
 
 #github-icon {

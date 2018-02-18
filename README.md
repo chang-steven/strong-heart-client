@@ -6,7 +6,7 @@ Thinkful (www.thinkful.com) Responsive Full Stack Capstone Project #3
 HEARTSTRONG is a personal exercise tracker, helping you log your activity ensuring you reap the benefits of cardiovascular fitness.  Regular exercise is difficult, but HEARTSTRONG provides visual analysis and statistics about your exercise, helping you keep on track.
 
 ### technologies: 
-/ React / Redux / HTML5 / CSS3 / JavaScript /  
+/ <a href="https://reactjs.org/">React</a> / <a href="https://redux.js.org/">Redux</a> / HTML5 / CSS3 / JavaScript / <a href="http://www.chartjs.org/">Chart.js</a> / <a href="https://facebook.github.io/jest/">Jest</a> (testing) / <a href="https://travis-ci.org/">Travis CI</a> / 
 
 ### live site:
 https://heartstrong.netlify.com/
@@ -15,13 +15,13 @@ https://heartstrong.netlify.com/
 https://github.com/chang-steven/strong-heart-api
 
 ### landing page:
-![Landing Page](/public/images/landing-page.jpeg?raw=true "Landing Page")
+<img src="/public/images/landing-page.jpeg" width="500" alt="landing page">
 
 ### dashboard:
-![Dashboard](/public/images/dashboard.jpeg?raw=true "Dashboard")
+<img src="/public/images/dashboard.jpeg" width="500" alt="dashboard">
 
 ### exercise log:
-![Exercise Log](/public/images/exercise-log.jpeg?raw=true "Exercise Log")
+<img src="/public/images/exercise-log.jpeg" width="500" alt="exercise log">
 
 ### add exercise form:
-![Add Exercise](/public/images/add-exercise.jpeg?raw=true "Add Exercise")
+<img src="/public/images/add-exercise.jpeg" width="500" alt="add exercise">
