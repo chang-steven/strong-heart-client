@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import Home from './index';
+import { Dashboard } from './index';
 
-describe('<Home />', () => {
+describe('<Dashboard />', () => {
   it('Should render without crashing', () => {
-    shallow(<Home />);
+    shallow(<Dashboard />);
   });
 });

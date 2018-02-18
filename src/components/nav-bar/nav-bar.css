@@ -90,6 +90,7 @@
   100% { bottom: 0 }
 }
 
+/* Media Queries*/
 @media (max-width: 680px) {
   #hamburger {
     display: block;
@@ -108,6 +109,7 @@
     display: inline-block;
     vertical-align: middle;
     z-index: 12;
+    margin-left: 15px;
   }
 
   .small-header a {

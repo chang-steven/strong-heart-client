@@ -1,16 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { fetchUserInfo, deleteExercise } from '../../actions';
-
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
+import { fetchUserInfo, deleteExercise } from '../../actions';
 import Modalbox from '../../components/modalbox';
 import EditExercise from '../EditExercise';
-import Moment from 'react-moment';
 import './exercise-log.css';
 
 export class ExerciseLog extends React.Component {
@@ -41,7 +40,6 @@ export class ExerciseLog extends React.Component {
   }
 
   openDeleteModal(exerciseId) {
-    console.log('opening delete modal', exerciseId);
     this.setState({
       isDeleteVisible: true,
       currentExerciseId: exerciseId
@@ -49,7 +47,6 @@ export class ExerciseLog extends React.Component {
   }
 
   deleteExercise() {
-    console.log('deleting exercise');
     const deleteId = { id: this.state.currentExerciseId};
     this.props.deleteExercise(deleteId, this.handleClose.bind(this));
   }
@@ -71,40 +68,34 @@ export class ExerciseLog extends React.Component {
     const exerciseLog  = this.props.exerciseLog.map((exercise, index) => {
       const capitalActivity = capitalizeFirstLetter(exercise.activity);
       return (
-      <div className="exercise-card" key={index}>
-        <h3 className="duration">{exercise.duration}m</h3>
-        <div className='dot-menu'>
-          <IconMenu
-            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-            targetOrigin={{horizontal: 'left', vertical: 'top'}}
-            >
-              <MenuItem
-                primaryText="edit"
-                onClick={()=> {
-                  this.openEditModal(exercise._id)
-                }}
-              />
-              <MenuItem
-                primaryText="delete"
-                onClick={()=>this.openDeleteModal(exercise._id)}
-              />
-            </IconMenu>
+        <div className="exercise-card" key={index}>
+          <h3 className="duration">{exercise.duration}m</h3>
+          <div className='dot-menu'>
+            <IconMenu
+              iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+              anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+              targetOrigin={{horizontal: 'left', vertical: 'top'}}
+              >
+                <MenuItem
+                  primaryText="edit"
+                  onClick={()=> {
+                    this.openEditModal(exercise._id)
+                  }}
+                />
+                <MenuItem
+                  primaryText="delete"
+                  onClick={()=>this.openDeleteModal(exercise._id)}
+                />
+              </IconMenu>
+            </div>
+            <h3 className="activity-title">{capitalActivity}</h3>
+            <p className="date"><Moment format="MM-DD-YY">{exercise.date}</Moment></p>
           </div>
-          <h3 className="activity-title">{capitalActivity}</h3>
-          <p className="date"><Moment format="MM-DD-YY">{exercise.date}</Moment></p>
-        </div>
-      )
-    });
+        )
+      });
 
-    return (
-      <div>
-        <MuiThemeProvider>
-          <h2 className="section-title">Exercise Log</h2>
-          <section className="exercise-log">
-            {exerciseLog}
-          </section>
-
+      return (
+        <div>
           { this.state.isEditVisible && this.state.currentExerciseId &&
             <Modalbox
               handleClose={this.handleClose.bind(this)}
@@ -124,20 +115,24 @@ export class ExerciseLog extends React.Component {
                   <button
                     className="active-button hvr-bounce-in"
                     onClick={()=>this.handleClose()}>Cancel</button>
-                  <button
-                    className="active-button hvr-bounce-in"
-                    onClick={()=>this.deleteExercise()}>Confirm</button>
-                </Modalbox>
-              }
+                    <button
+                      className="active-button hvr-bounce-in"
+                      onClick={()=>this.deleteExercise()}>Confirm</button>
+                    </Modalbox>
+                  }
+                  <MuiThemeProvider>
+                    <section className="exercise-log">
+                      <h2 className="section-title">Exercise Log</h2>
+                      {exerciseLog}
+                    </section>
+                  </MuiThemeProvider>
+                </div>
+              );
+            }
+          }
 
-          </MuiThemeProvider>
-        </div>
-      );
-    }
-  }
+          const mapStateToProps = state => ({
+            exerciseLog: state.user.exerciseLog
+          })
 
-  const mapStateToProps = state => ({
-    exerciseLog: state.user.exerciseLog
-  })
-
-  export default connect(mapStateToProps, {fetchUserInfo, deleteExercise})(ExerciseLog);
+          export default connect(mapStateToProps, {fetchUserInfo, deleteExercise})(ExerciseLog);

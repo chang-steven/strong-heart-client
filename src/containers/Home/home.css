@@ -12,15 +12,15 @@
   line-height: 1.5em;
 }
 
-  .home-paragraph span {
-    font-family: 'Roboto Condensed', sans-serif;
+.home-paragraph span {
+  font-family: 'Roboto Condensed', sans-serif;
 
-  }
+}
 
-  .home-paragraph strong {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 700;
-  }
+.home-paragraph strong {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+}
 
 .home-blurb, .image {
   font-size: 1.5em;
@@ -40,23 +40,23 @@
 
 .showTopAnimation {
   position: relative;
-   left: -30em;
-   -webkit-animation: slide-in 1s forwards;
-   animation: slide-in 1s forwards;
+  left: -30em;
+  -webkit-animation: slide-in 1s forwards;
+  animation: slide-in 1s forwards;
 }
 
 .showMiddleAnimation {
   position: relative;
-   right: -30em;
-   -webkit-animation: slide-inR 1s forwards;
-   animation: slide-inR 1s forwards;
+  right: -30em;
+  -webkit-animation: slide-inR 1s forwards;
+  animation: slide-inR 1s forwards;
 }
 
 .showBottomAnimation {
   position: relative;
-   bottom: -30em;
-   -webkit-animation: slide-up 1s forwards;
-   animation: slide-up 1s forwards;
+  bottom: -30em;
+  -webkit-animation: slide-up 1s forwards;
+  animation: slide-up 1s forwards;
 }
 
 @-webkit-keyframes slide-in {
@@ -90,17 +90,17 @@
 
   * {
     -webkit-animation: none !important;
- -moz-animation: none !important;
- -o-animation: none !important;
- -ms-animation: none !important;
- animation: none !important;
-
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
-  -ms-transition: none !important;
-  transition: none !important;
- }
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
+    
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+  }
 
   .noShowTopAnimation, .noShowMiddleAnimation, .noShowBottomAnimation {
     visibility: visible;
@@ -109,9 +109,9 @@
   .showTopAnimation, .showMiddleAnimation, .showBottomAnimation {
     position: static;
     -webkit-animation: none !important;
-   -moz-animation: none !important;
-   -o-animation: none !important;
-   -ms-animation: none !important;
-   animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
   }
 }

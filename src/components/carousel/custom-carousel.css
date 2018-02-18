@@ -25,13 +25,12 @@
   margin: 0;
 }
 
-
+/* Media Queries*/
 @media (max-width: 800) {
   #blurb {
     font-size: 1em;
   }
 }
-
 
 @media (min-width: 480px) and (max-width: 680px) {
   .carousel-holder {

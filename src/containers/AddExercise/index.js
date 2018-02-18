@@ -32,6 +32,4 @@ const mapStateToProps = (state) => ({
   user: state.user.currentUser
   });
 
-
-
 export default connect(mapStateToProps, { addExercise })(AddExercise);

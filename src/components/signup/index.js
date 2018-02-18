@@ -14,14 +14,13 @@ export class SignUp extends React.Component {
   }
 
   render() {
-      const { handleSubmit, pristine, reset, submitting } = this.props
-      return (
-        <div>
-
-          <form
-            className="signup form"
-            onSubmit={handleSubmit(this.onSubmit.bind(this))}
-            >
+    const { handleSubmit, pristine, reset, submitting } = this.props
+    return (
+      <div>
+        <form
+          className="signup form"
+          onSubmit={handleSubmit(this.onSubmit.bind(this))}
+          >
             <fieldset>
               <legend>Sign-up</legend>
               <Field

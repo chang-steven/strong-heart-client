@@ -39,6 +39,7 @@
   vertical-align: middle;
 }
 
+/* Media Queries*/
 @media (max-width: 680px) {
   .App-header {
     display: none;
@@ -47,5 +48,4 @@
   main {
     padding-top: 74px;
   }
-
 }

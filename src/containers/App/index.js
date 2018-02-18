@@ -24,33 +24,33 @@ export class App extends React.Component {
     this.state = {
       isModalVisible: false,
       modalName: null,
-      };
-    }
+    };
+  }
 
   handleClose(){
     this.setState({ isModalVisible: false,
-                    modalName: null });
-  }
+      modalName: null });
+    }
 
-  open(modalName){
-    this.setState({ isModalVisible: true,
-                    modalName });
-  }
+    open(modalName){
+      this.setState({ isModalVisible: true,
+        modalName });
+      }
 
-  render() {
-    return (
-        <div className="App">
-          <NavBar openModal={this.open.bind(this)} />
-          <Header />
-          <main role="main">
+      render() {
+        return (
+          <div className="App">
+            <NavBar openModal={this.open.bind(this)} />
+            <Header />
+            <main role="main">
 
-            { this.state.isModalVisible && this.state.modalName === 'login' &&
-            <Modalbox handleClose={this.handleClose.bind(this)}>
-              <Login
-                openModal={this.open.bind(this)}
-                handleClose={this.handleClose.bind(this)}
-              />
-            </Modalbox>
+              { this.state.isModalVisible && this.state.modalName === 'login' &&
+              <Modalbox handleClose={this.handleClose.bind(this)}>
+                <Login
+                  openModal={this.open.bind(this)}
+                  handleClose={this.handleClose.bind(this)}
+                />
+              </Modalbox>
             }
 
             { this.state.isModalVisible && this.state.modalName === 'signup' &&
@@ -60,28 +60,28 @@ export class App extends React.Component {
                 handleClose={this.handleClose.bind(this)}
               />
             </Modalbox>
-            }
+          }
 
-            { this.state.isModalVisible && this.state.modalName === 'add-exercise' &&
-            <Modalbox handleClose={this.handleClose.bind(this)}>
-              <AddExercise handleClose={this.handleClose.bind(this)} />
-            </Modalbox>
-            }
+          { this.state.isModalVisible && this.state.modalName === 'add-exercise' &&
+          <Modalbox handleClose={this.handleClose.bind(this)}>
+            <AddExercise handleClose={this.handleClose.bind(this)} />
+          </Modalbox>
+        }
 
-            <Loader>
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                <PrivateRoute exact path="/exercise-log"
-                  component={()=> <ExerciseLog openModal={this.open.bind(this)}/>}
-                />
-              </Switch>
-            </Loader>
-          </main>
-          <Footer />
-        </div>
-    );
-  }
+        <Loader>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/exercise-log"
+            component={()=> <ExerciseLog openModal={this.open.bind(this)}/>}
+          />
+        </Switch>
+      </Loader>
+    </main>
+    <Footer />
+  </div>
+);
+}
 }
 
 const mapStateToProps = state => ({

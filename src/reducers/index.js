@@ -4,9 +4,9 @@ import { routerReducer } from 'react-router-redux'
 import UserReducer from './user.reducer';
 
 export const reducers = combineReducers({
-    form: formReducer,
-    user: UserReducer,
-    routing: routerReducer
+  form: formReducer,
+  user: UserReducer,
+  routing: routerReducer
 });
 
 export default reducers;
