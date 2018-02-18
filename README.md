@@ -15,13 +15,13 @@ https://heartstrong.netlify.com/
 https://github.com/chang-steven/strong-heart-api
 
 ### landing page:
-![Landing Page](/public/image/landing-page.jpeg?raw=true "Landing Page")
+![Landing Page](/public/images/landing-page.jpeg?raw=true "Landing Page")
 
 ### dashboard:
-![Dashboard](/public/image/dashboard.jpeg?raw=true "Dashboard")
+![Dashboard](/public/images/dashboard.jpeg?raw=true "Dashboard")
 
 ### exercise log:
-![Exercise Log](/public/image/exercise-log.jpeg?raw=true "Exercise Log")
+![Exercise Log](/public/images/exercise-log.jpeg?raw=true "Exercise Log")
 
 ### add exercise form:
-![Add Exercise](/public/image/add-exercise.jpg?raw=true "Add Exercise")
+![Add Exercise](/public/images/add-exercise.jpeg?raw=true "Add Exercise")
