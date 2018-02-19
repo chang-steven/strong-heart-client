@@ -6,7 +6,7 @@ Thinkful (www.thinkful.com) Responsive Full Stack Capstone Project #3
 HEARTSTRONG is a personal exercise tracker, helping you log your activity ensuring you reap the benefits of cardiovascular fitness.  Regular exercise is difficult, but HEARTSTRONG provides visual analysis and statistics about your exercise, helping you keep on track.
 
 ### technologies: 
-/ <a href="https://reactjs.org/">React</a> / <a href="https://redux.js.org/">Redux</a> / HTML5 / CSS3 / JavaScript / <a href="http://www.chartjs.org/">Chart.js</a> / <a href="https://facebook.github.io/jest/">Jest</a> (testing) / <a href="https://travis-ci.org/">Travis CI</a> / 
+/ <a href="https://reactjs.org/">React</a> / <a href="https://redux.js.org/">Redux</a> / HTML5 / CSS3 / JavaScript / <a href="http://www.chartjs.org/">Chart.js</a> / <a href="https://github.com/airbnb/enzyme">Enzyme</a> + <a href="https://facebook.github.io/jest/">Jest</a> (testing) / <a href="https://travis-ci.org/">Travis CI</a> / 
 
 ### live site:
 https://heartstrong.netlify.com/

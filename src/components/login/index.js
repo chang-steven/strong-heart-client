@@ -57,6 +57,11 @@ export class Login extends React.Component {
 
                 {this.props.errorLogIn && <div className="error"><i className="fas fa-exclamation-triangle"></i> {this.props.errorMsg || 'Seems like there was a problem, try again.'}</div>}
 
+                {this.props.loading && <div className="success">
+                  Loading...
+                </div>
+                }
+
                 <p>Wanna just look around? <button className="hvr-bounce-in active-button" onClick={e => this.handleClick(e)}>Demo Login</button></p>
               </fieldset>
             </form>
@@ -67,15 +72,11 @@ export class Login extends React.Component {
 
     const mapStateToProps = state => ({
       user: state.form.user,
+      loading: state.user.loading,
       loggedIn: state.user.loggedIn,
       errorLogIn: state.user.errorLogIn,
       errorMsg: state.user.errorMsg,
     });
-
-    // const mapDispatchToProps = dispatch => ({
-    //   userLogIn: dispatch(userLogIn)
-    // });
-
 
     Login = connect(mapStateToProps, { userLogIn })(Login);
 

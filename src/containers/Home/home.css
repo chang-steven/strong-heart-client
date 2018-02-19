@@ -39,6 +39,7 @@
 }
 
 .showTopAnimation {
+  visibility: visible;
   position: relative;
   left: -30em;
   -webkit-animation: slide-in 1s forwards;
@@ -46,6 +47,7 @@
 }
 
 .showMiddleAnimation {
+  visibility: visible;
   position: relative;
   right: -30em;
   -webkit-animation: slide-inR 1s forwards;
@@ -53,6 +55,7 @@
 }
 
 .showBottomAnimation {
+  visibility: visible;
   position: relative;
   bottom: -30em;
   -webkit-animation: slide-up 1s forwards;

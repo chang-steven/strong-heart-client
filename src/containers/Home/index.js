@@ -17,15 +17,22 @@ export class Home extends React.Component {
   }
 
   componentDidMount() {
-    window.onscroll = () => {
-      this.handleTopAnimationScroll();
-      this.handleMiddleAnimationScroll();
-      this.handleBottomAnimationScroll();
+      window.addEventListener('scroll', this._handleScroll);
     }
-  }
+
+    componentWillUnmount() {
+      window.removeEventListener('scroll', this._handleScroll)
+    }
+
+    _handleScroll = () => {
+        this.handleTopAnimationScroll();
+        this.handleMiddleAnimationScroll();
+        this.handleBottomAnimationScroll();
+      }
+
 
   handleTopAnimationScroll() {
-    if (document.documentElement.scrollTop > 235) {
+    if (window.scrollY > 235) {
       this.setState({
         showTopAnimation: true,
       })
@@ -39,7 +46,7 @@ export class Home extends React.Component {
   }
 
   handleMiddleAnimationScroll() {
-    if (document.documentElement.scrollTop > 805) {
+    if (window.scrollY > 805) {
       this.setState({
         showMiddleAnimation: true,
       })
@@ -53,7 +60,7 @@ export class Home extends React.Component {
   }
 
   handleBottomAnimationScroll() {
-    if (document.documentElement.scrollTop > 1000) {
+    if (window.scrollY > 1000) {
       this.setState({
         showBottomAnimation: true,
       })

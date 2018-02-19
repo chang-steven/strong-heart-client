@@ -80,7 +80,6 @@ describe('HEARTSTRONG action creators', () => {
 
       };
       const callback = jest.fn();
-
       fetch.mockResponseOnce(JSON.stringify(response));
 
       return store.dispatch(userLogIn(user, callback))

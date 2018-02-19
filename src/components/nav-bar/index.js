@@ -18,11 +18,15 @@ export class NavBar extends React.Component {
   }
 
   componentDidMount() {
-    window.onscroll = () => this.handleScroll()
+    window.addEventListener('scroll', this._handleScroll);
   }
 
-  handleScroll() {
-    if (document.documentElement.scrollTop > 124) {
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._handleScroll)
+  }
+
+  _handleScroll = () => {
+    if (window.scrollY > 124) {
       this.setState({
         showNavLogo: true,
       })
