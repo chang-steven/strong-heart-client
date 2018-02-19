@@ -6,6 +6,7 @@ import { required } from '../../helpers/validators';
 import Input from '../../components/input';
 
 import './login.css';
+import '../loader/bar-loader.css';
 
 export class Login extends React.Component {
   onSubmit(values) {
@@ -57,10 +58,7 @@ export class Login extends React.Component {
 
                 {this.props.errorLogIn && <div className="error"><i className="fas fa-exclamation-triangle"></i> {this.props.errorMsg || 'Seems like there was a problem, try again.'}</div>}
 
-                {this.props.loading && <div className="success">
-                  Loading...
-                </div>
-                }
+                { this.props.loading && <div className="loader"></div> }
 
                 <p>Wanna just look around? <button className="hvr-bounce-in active-button" onClick={e => this.handleClick(e)}>Demo Login</button></p>
               </fieldset>

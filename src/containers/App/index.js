@@ -44,15 +44,6 @@ export class App extends React.Component {
             <Header />
             <main role="main">
 
-              { this.state.isModalVisible && this.state.modalName === 'login' &&
-              <Modalbox handleClose={this.handleClose.bind(this)}>
-                <Login
-                  openModal={this.open.bind(this)}
-                  handleClose={this.handleClose.bind(this)}
-                />
-              </Modalbox>
-            }
-
             { this.state.isModalVisible && this.state.modalName === 'signup' &&
             <Modalbox handleClose={this.handleClose.bind(this)}>
               <SignUp
@@ -69,6 +60,16 @@ export class App extends React.Component {
         }
 
         <Loader>
+
+          { this.state.isModalVisible && this.state.modalName === 'login' &&
+          <Modalbox handleClose={this.handleClose.bind(this)}>
+            <Login
+              openModal={this.open.bind(this)}
+              handleClose={this.handleClose.bind(this)}
+            />
+          </Modalbox>
+        }
+        
           <Switch>
             <Route exact path="/" component={Home} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
