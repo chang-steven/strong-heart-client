@@ -80,7 +80,7 @@ export class Home extends React.Component {
         <section id='how-it-works' className={this.state.showTopAnimation ? 'showTopAnimation' : 'noShowTopAnimation'}>
           <div className="home-blurb">
             <h2 className="section-title">Reap the Benefits</h2>
-            <p className="home-paragraph">We all know that regular exercise is difficult, and without structure and determination it's tough to stay on schedule.  With <span>HEART<strong>STRONG</strong></span> log your exercise and analyze your activity patterns.</p>
+            <p className="home-paragraph">We all know that regular exercise is difficult and without structure and determination it's tough to stay on schedule.  With <span>HEART<strong>STRONG</strong></span>, you can log your exercise and analyze your activity patterns.</p>
           </div>
           <div className="image">
             <img src={exercise} alt='exercise'/>

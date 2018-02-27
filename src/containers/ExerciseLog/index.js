@@ -65,11 +65,12 @@ export class ExerciseLog extends React.Component {
     function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     };
-    const exerciseLog  = this.props.exerciseLog.map((exercise, index) => {
+    const exerciseLog = this.props.exerciseLog.map((exercise, index) => {
       const capitalActivity = capitalizeFirstLetter(exercise.activity);
+
       return (
         <div className="exercise-card" key={index}>
-          <h3 className="duration">{exercise.duration}m</h3>
+          <h3 className="duration">{exercise.duration}min</h3>
           <div className='dot-menu'>
             <IconMenu
               iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
@@ -89,7 +90,7 @@ export class ExerciseLog extends React.Component {
               </IconMenu>
             </div>
             <h3 className="activity-title">{capitalActivity}</h3>
-            <p className="date"><Moment format="MM-DD-YY">{exercise.date}</Moment></p>
+            <p className="date"><Moment format="M/D/YY">{exercise.date}</Moment></p>
           </div>
         )
       });

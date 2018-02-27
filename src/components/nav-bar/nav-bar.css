@@ -17,12 +17,12 @@
 .nav-links {
   display: inline-block;
   padding: 20px;
-  color: gray;
+  color: #666565;
   cursor: pointer;
 }
 
 .nav-links a {
-  color: gray;
+  color: #666565;
 }
 
 .nav-links a:hover {
